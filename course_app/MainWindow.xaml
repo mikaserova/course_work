@@ -4,9 +4,36 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:course_app"
+        xmlns:viewmodels="clr-namespace:course_app.ViewModel"
+        xmlns:views="clr-namespace:course_app.Views"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+    <Window.Resources>
+        <DataTemplate x:Name="ScheduleModelTemplate" DataType="{x:Type viewmodels:ScheduleModel}">
+            <views:personal_schedule DataContext="{Binding}"></views:personal_schedule>
+        </DataTemplate>
+        <DataTemplate x:Name="ScheduleModelTemplate" DataType="{x:Type viewmodels:GeneralSchedule}">
+            <views:general_schedule DataContext="{Binding}"></views:general_schedule>
+        </DataTemplate>
+    </Window.Resources>
     <Grid>
-        
+        <Grid.Background>
+            <SolidColorBrush Color="#FF000306" Opacity="0.85"/>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="39*"></RowDefinition>
+            <RowDefinition Height="241*"></RowDefinition>
+
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="159*"></ColumnDefinition>
+            <ColumnDefinition Width="634*"></ColumnDefinition>
+
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Row="1">
+            <Button x:Name="schedule" Click="Schedule_Click">Personal Schedule</Button>
+            <Button x:Name="general_schedule" Click="General_schedule_Click" >General Schedule</Button>
+        </StackPanel>
+        <ContentControl Grid.Column="1" Grid.Row="1" Background="#FFF2F4F4" Content="{Binding}"></ContentControl>
     </Grid>
 </Window>

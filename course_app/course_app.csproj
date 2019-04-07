@@ -93,6 +93,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>hotel_model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Login_window.xaml.cs">
+      <DependentUpon>Login_window.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AppModel.cs" />
     <Compile Include="parking_spot.cs">
       <DependentUpon>hotel_model.tt</DependentUpon>
     </Compile>
@@ -117,9 +121,22 @@
     <Compile Include="service_request.cs">
       <DependentUpon>hotel_model.tt</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\AppViewModel.cs" />
+    <Compile Include="ViewModel\GeneralSchedule.cs" />
+    <Compile Include="ViewModel\ScheduleModel.cs" />
+    <Compile Include="Views\general_schedule.xaml.cs">
+      <DependentUpon>general_schedule.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\personal_schedule.xaml.cs">
+      <DependentUpon>personal_schedule.xaml</DependentUpon>
+    </Compile>
     <Compile Include="working_schedule.cs">
       <DependentUpon>hotel_model.tt</DependentUpon>
     </Compile>
+    <Page Include="Login_window.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -142,6 +159,14 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\general_schedule.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\personal_schedule.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище hotel_newModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Хранилище hotel_newModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="additional_service">
           <Key>
             <PropertyRef Name="additional_service_id" />
@@ -65,6 +65,7 @@
           <Property Name="employee_last_name" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="employee_phone_number" Type="varchar" MaxLength="15" Nullable="false" />
           <Property Name="employee_passport_serial_number" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="employee_pasword" Type="varchar" MaxLength="15" Nullable="false" />
           <Property Name="tax_payer_id" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="wage" Type="decimal" Precision="6" Scale="2" Nullable="false" />
           <Property Name="position_id" Type="int" Nullable="false" />
@@ -483,8 +484,7 @@
             <End Role="reservation" EntitySet="reservation" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="hotel_newModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -565,6 +565,7 @@
           <NavigationProperty Name="working_schedule" Relationship="Self.r_17" FromRole="employee" ToRole="working_schedule" />
           <NavigationProperty Name="employee_position" Relationship="Self.r_18" FromRole="employee" ToRole="employee_position" />
           <NavigationProperty Name="service_request" Relationship="Self.r_24" FromRole="employee" ToRole="service_request" />
+          <Property Name="employee_pasword" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="employee_position">
           <Key>
@@ -1066,6 +1067,7 @@
           <EntitySetMapping Name="employee">
             <EntityTypeMapping TypeName="hotel_newModel.employee">
               <MappingFragment StoreEntitySet="employee">
+                <ScalarProperty Name="employee_pasword" ColumnName="employee_pasword" />
                 <ScalarProperty Name="employee_id" ColumnName="employee_id" />
                 <ScalarProperty Name="employye_first_name" ColumnName="employye_first_name" />
                 <ScalarProperty Name="employye_middle_name" ColumnName="employye_middle_name" />
