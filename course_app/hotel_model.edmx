@@ -1,0 +1,1222 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище hotel_newModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="additional_service">
+          <Key>
+            <PropertyRef Name="additional_service_id" />
+          </Key>
+          <Property Name="additional_service_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="service_name" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="service_cost" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="service_price" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="cleaning_schedule">
+          <Key>
+            <PropertyRef Name="cleaning_schedule_id" />
+          </Key>
+          <Property Name="cleaning_schedule_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cleaning_start_time" Type="datetime" Nullable="false" />
+          <Property Name="cleaning_end_time" Type="datetime" Nullable="false" />
+          <Property Name="room_id" Type="int" Nullable="false" />
+          <Property Name="employee_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="client">
+          <Key>
+            <PropertyRef Name="client_id" />
+          </Key>
+          <Property Name="client_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="client_first_name" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="client_last_name" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="client_middle_name" Type="varchar" MaxLength="30" />
+          <Property Name="client_phone_number" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="client_email" Type="varchar" MaxLength="90" />
+          <Property Name="client_passport_serial_number" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="client_notes" Type="text" />
+          <Property Name="client_type_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="client_type">
+          <Key>
+            <PropertyRef Name="client_type_id" />
+          </Key>
+          <Property Name="client_type_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="client_type_name" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="discount" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="credential">
+          <Key>
+            <PropertyRef Name="credential_id" />
+          </Key>
+          <Property Name="credential_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="employee_id" Type="int" />
+          <Property Name="username" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="password" Type="varchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="employee">
+          <Key>
+            <PropertyRef Name="employee_id" />
+          </Key>
+          <Property Name="employee_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="employye_first_name" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="employye_middle_name" Type="varchar" MaxLength="30" />
+          <Property Name="employee_last_name" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="employee_phone_number" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="employee_passport_serial_number" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="tax_payer_id" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="wage" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="position_id" Type="int" Nullable="false" />
+          <Property Name="employee_email" Type="varchar" MaxLength="90" />
+        </EntityType>
+        <EntityType Name="employee_position">
+          <Key>
+            <PropertyRef Name="position_id" />
+          </Key>
+          <Property Name="position_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="position_name" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="position_description" Type="varchar" MaxLength="20" />
+          <Property Name="wage_lower_bound" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="wage_upper_bound" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="entrance_log">
+          <Key>
+            <PropertyRef Name="entrance_log_id" />
+          </Key>
+          <Property Name="entrance_log_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="log_time" Type="datetime" Nullable="false" />
+          <Property Name="parking_spot_id" Type="int" Nullable="false" />
+          <Property Name="status" Type="varchar" MaxLength="3" Nullable="false" />
+        </EntityType>
+        <EntityType Name="parking_spot">
+          <Key>
+            <PropertyRef Name="parking_spot_id" />
+          </Key>
+          <Property Name="parking_spot_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="number" Type="varchar" MaxLength="5" />
+          <Property Name="type_id" Type="int" />
+          <Property Name="reservation_id" Type="int" />
+        </EntityType>
+        <EntityType Name="parking_type">
+          <Key>
+            <PropertyRef Name="parking_type_id" />
+          </Key>
+          <Property Name="parking_type_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="width" Type="decimal" Precision="3" Scale="1" Nullable="false" />
+          <Property Name="length" Type="decimal" Precision="3" Scale="1" Nullable="false" />
+          <Property Name="weight" Type="decimal" Precision="6" Scale="1" Nullable="false" />
+          <Property Name="price_per_day" Type="decimal" Precision="5" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="payment">
+          <Key>
+            <PropertyRef Name="payment_id" />
+          </Key>
+          <Property Name="payment_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="payment_sum" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="payment_date" Type="datetime" Nullable="false" />
+          <Property Name="reservation_id" Type="int" Nullable="false" />
+          <Property Name="payment_type_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="payment_type">
+          <Key>
+            <PropertyRef Name="payment_type_id" />
+          </Key>
+          <Property Name="payment_type_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="payment_name" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="reservation">
+          <Key>
+            <PropertyRef Name="reservation_id" />
+          </Key>
+          <Property Name="reservation_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="reservation_number" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="check_in_date" Type="datetime" Nullable="false" />
+          <Property Name="check_out_date" Type="datetime" Nullable="false" />
+          <Property Name="room_id" Type="int" Nullable="false" />
+          <Property Name="employee_id" Type="int" Nullable="false" />
+          <Property Name="client_id" Type="int" />
+        </EntityType>
+        <EntityType Name="room">
+          <Key>
+            <PropertyRef Name="room_id" />
+          </Key>
+          <Property Name="room_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="room_number" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="room_description" Type="text" />
+          <Property Name="room_price" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="room_type_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="room_type">
+          <Key>
+            <PropertyRef Name="room_type_id" />
+          </Key>
+          <Property Name="room_type_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="room_type_name" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="room_type_description" Type="text" />
+        </EntityType>
+        <EntityType Name="service_request">
+          <Key>
+            <PropertyRef Name="service_request_id" />
+          </Key>
+          <Property Name="service_request_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="amount" Type="int" Nullable="false" />
+          <Property Name="service_provided_time" Type="datetime" />
+          <Property Name="additional_service_id" Type="int" Nullable="false" />
+          <Property Name="reservation_id" Type="int" Nullable="false" />
+          <Property Name="employee_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="working_schedule">
+          <Key>
+            <PropertyRef Name="working_schedule_id" />
+          </Key>
+          <Property Name="working_schedule_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="shift_start_time" Type="datetime" Nullable="false" />
+          <Property Name="shift_end_time" Type="datetime" Nullable="false" />
+          <Property Name="employee_id" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="f_1">
+          <End Role="employee" Type="Self.employee" Multiplicity="0..1" />
+          <End Role="credential" Type="Self.credential" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="employee">
+              <PropertyRef Name="employee_id" />
+            </Principal>
+            <Dependent Role="credential">
+              <PropertyRef Name="employee_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__entrance___parki__6EF57B66">
+          <End Role="parking_spot" Type="Self.parking_spot" Multiplicity="1" />
+          <End Role="entrance_log" Type="Self.entrance_log" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="parking_spot">
+              <PropertyRef Name="parking_spot_id" />
+            </Principal>
+            <Dependent Role="entrance_log">
+              <PropertyRef Name="parking_spot_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__parking_s__reser__6B24EA82">
+          <End Role="reservation" Type="Self.reservation" Multiplicity="0..1" />
+          <End Role="parking_spot" Type="Self.parking_spot" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="reservation">
+              <PropertyRef Name="reservation_id" />
+            </Principal>
+            <Dependent Role="parking_spot">
+              <PropertyRef Name="reservation_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__parking_s__type___693CA210">
+          <End Role="parking_type" Type="Self.parking_type" Multiplicity="0..1" />
+          <End Role="parking_spot" Type="Self.parking_spot" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="parking_type">
+              <PropertyRef Name="parking_type_id" />
+            </Principal>
+            <Dependent Role="parking_spot">
+              <PropertyRef Name="type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="r_11">
+          <End Role="client_type" Type="Self.client_type" Multiplicity="1" />
+          <End Role="client" Type="Self.client" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="client_type">
+              <PropertyRef Name="client_type_id" />
+            </Principal>
+            <Dependent Role="client">
+              <PropertyRef Name="client_type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="r_12">
+          <End Role="room" Type="Self.room" Multiplicity="1" />
+          <End Role="reservation" Type="Self.reservation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="room">
+              <PropertyRef Name="room_id" />
+            </Principal>
+            <Dependent Role="reservation">
+              <PropertyRef Name="room_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="r_13">
+          <End Role="room_type" Type="Self.room_type" Multiplicity="1" />
+          <End Role="room" Type="Self.room" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="room_type">
+              <PropertyRef Name="room_type_id" />
+            </Principal>
+            <Dependent Role="room">
+              <PropertyRef Name="room_type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="r_14">
+          <End Role="employee" Type="Self.employee" Multiplicity="1" />
+          <End Role="reservation" Type="Self.reservation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="employee">
+              <PropertyRef Name="employee_id" />
+            </Principal>
+            <Dependent Role="reservation">
+              <PropertyRef Name="employee_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="r_15">
+          <End Role="room" Type="Self.room" Multiplicity="1" />
+          <End Role="cleaning_schedule" Type="Self.cleaning_schedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="room">
+              <PropertyRef Name="room_id" />
+            </Principal>
+            <Dependent Role="cleaning_schedule">
+              <PropertyRef Name="room_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="r_16">
+          <End Role="employee" Type="Self.employee" Multiplicity="1" />
+          <End Role="cleaning_schedule" Type="Self.cleaning_schedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="employee">
+              <PropertyRef Name="employee_id" />
+            </Principal>
+            <Dependent Role="cleaning_schedule">
+              <PropertyRef Name="employee_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="r_17">
+          <End Role="employee" Type="Self.employee" Multiplicity="1" />
+          <End Role="working_schedule" Type="Self.working_schedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="employee">
+              <PropertyRef Name="employee_id" />
+            </Principal>
+            <Dependent Role="working_schedule">
+              <PropertyRef Name="employee_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="r_18">
+          <End Role="employee_position" Type="Self.employee_position" Multiplicity="1" />
+          <End Role="employee" Type="Self.employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="employee_position">
+              <PropertyRef Name="position_id" />
+            </Principal>
+            <Dependent Role="employee">
+              <PropertyRef Name="position_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="r_19">
+          <End Role="additional_service" Type="Self.additional_service" Multiplicity="1" />
+          <End Role="service_request" Type="Self.service_request" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="additional_service">
+              <PropertyRef Name="additional_service_id" />
+            </Principal>
+            <Dependent Role="service_request">
+              <PropertyRef Name="additional_service_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="r_21">
+          <End Role="reservation" Type="Self.reservation" Multiplicity="1" />
+          <End Role="service_request" Type="Self.service_request" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="reservation">
+              <PropertyRef Name="reservation_id" />
+            </Principal>
+            <Dependent Role="service_request">
+              <PropertyRef Name="reservation_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="r_22">
+          <End Role="reservation" Type="Self.reservation" Multiplicity="1" />
+          <End Role="payment" Type="Self.payment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="reservation">
+              <PropertyRef Name="reservation_id" />
+            </Principal>
+            <Dependent Role="payment">
+              <PropertyRef Name="reservation_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="r_23">
+          <End Role="payment_type" Type="Self.payment_type" Multiplicity="1" />
+          <End Role="payment" Type="Self.payment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="payment_type">
+              <PropertyRef Name="payment_type_id" />
+            </Principal>
+            <Dependent Role="payment">
+              <PropertyRef Name="payment_type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="r_24">
+          <End Role="employee" Type="Self.employee" Multiplicity="1" />
+          <End Role="service_request" Type="Self.service_request" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="employee">
+              <PropertyRef Name="employee_id" />
+            </Principal>
+            <Dependent Role="service_request">
+              <PropertyRef Name="employee_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="r_7">
+          <End Role="client" Type="Self.client" Multiplicity="0..1" />
+          <End Role="reservation" Type="Self.reservation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="client">
+              <PropertyRef Name="client_id" />
+            </Principal>
+            <Dependent Role="reservation">
+              <PropertyRef Name="client_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище hotel_newModelContainer">
+          <EntitySet Name="additional_service" EntityType="Self.additional_service" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="cleaning_schedule" EntityType="Self.cleaning_schedule" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="client" EntityType="Self.client" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="client_type" EntityType="Self.client_type" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="credential" EntityType="Self.credential" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="employee" EntityType="Self.employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="employee_position" EntityType="Self.employee_position" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="entrance_log" EntityType="Self.entrance_log" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="parking_spot" EntityType="Self.parking_spot" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="parking_type" EntityType="Self.parking_type" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="payment" EntityType="Self.payment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="payment_type" EntityType="Self.payment_type" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="reservation" EntityType="Self.reservation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="room" EntityType="Self.room" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="room_type" EntityType="Self.room_type" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="service_request" EntityType="Self.service_request" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="working_schedule" EntityType="Self.working_schedule" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="f_1" Association="Self.f_1">
+            <End Role="employee" EntitySet="employee" />
+            <End Role="credential" EntitySet="credential" />
+          </AssociationSet>
+          <AssociationSet Name="FK__entrance___parki__6EF57B66" Association="Self.FK__entrance___parki__6EF57B66">
+            <End Role="parking_spot" EntitySet="parking_spot" />
+            <End Role="entrance_log" EntitySet="entrance_log" />
+          </AssociationSet>
+          <AssociationSet Name="FK__parking_s__reser__6B24EA82" Association="Self.FK__parking_s__reser__6B24EA82">
+            <End Role="reservation" EntitySet="reservation" />
+            <End Role="parking_spot" EntitySet="parking_spot" />
+          </AssociationSet>
+          <AssociationSet Name="FK__parking_s__type___693CA210" Association="Self.FK__parking_s__type___693CA210">
+            <End Role="parking_type" EntitySet="parking_type" />
+            <End Role="parking_spot" EntitySet="parking_spot" />
+          </AssociationSet>
+          <AssociationSet Name="r_11" Association="Self.r_11">
+            <End Role="client_type" EntitySet="client_type" />
+            <End Role="client" EntitySet="client" />
+          </AssociationSet>
+          <AssociationSet Name="r_12" Association="Self.r_12">
+            <End Role="room" EntitySet="room" />
+            <End Role="reservation" EntitySet="reservation" />
+          </AssociationSet>
+          <AssociationSet Name="r_13" Association="Self.r_13">
+            <End Role="room_type" EntitySet="room_type" />
+            <End Role="room" EntitySet="room" />
+          </AssociationSet>
+          <AssociationSet Name="r_14" Association="Self.r_14">
+            <End Role="employee" EntitySet="employee" />
+            <End Role="reservation" EntitySet="reservation" />
+          </AssociationSet>
+          <AssociationSet Name="r_15" Association="Self.r_15">
+            <End Role="room" EntitySet="room" />
+            <End Role="cleaning_schedule" EntitySet="cleaning_schedule" />
+          </AssociationSet>
+          <AssociationSet Name="r_16" Association="Self.r_16">
+            <End Role="employee" EntitySet="employee" />
+            <End Role="cleaning_schedule" EntitySet="cleaning_schedule" />
+          </AssociationSet>
+          <AssociationSet Name="r_17" Association="Self.r_17">
+            <End Role="employee" EntitySet="employee" />
+            <End Role="working_schedule" EntitySet="working_schedule" />
+          </AssociationSet>
+          <AssociationSet Name="r_18" Association="Self.r_18">
+            <End Role="employee_position" EntitySet="employee_position" />
+            <End Role="employee" EntitySet="employee" />
+          </AssociationSet>
+          <AssociationSet Name="r_19" Association="Self.r_19">
+            <End Role="additional_service" EntitySet="additional_service" />
+            <End Role="service_request" EntitySet="service_request" />
+          </AssociationSet>
+          <AssociationSet Name="r_21" Association="Self.r_21">
+            <End Role="reservation" EntitySet="reservation" />
+            <End Role="service_request" EntitySet="service_request" />
+          </AssociationSet>
+          <AssociationSet Name="r_22" Association="Self.r_22">
+            <End Role="reservation" EntitySet="reservation" />
+            <End Role="payment" EntitySet="payment" />
+          </AssociationSet>
+          <AssociationSet Name="r_23" Association="Self.r_23">
+            <End Role="payment_type" EntitySet="payment_type" />
+            <End Role="payment" EntitySet="payment" />
+          </AssociationSet>
+          <AssociationSet Name="r_24" Association="Self.r_24">
+            <End Role="employee" EntitySet="employee" />
+            <End Role="service_request" EntitySet="service_request" />
+          </AssociationSet>
+          <AssociationSet Name="r_7" Association="Self.r_7">
+            <End Role="client" EntitySet="client" />
+            <End Role="reservation" EntitySet="reservation" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="hotel_newModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="additional_service">
+          <Key>
+            <PropertyRef Name="additional_service_id" />
+          </Key>
+          <Property Name="additional_service_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="service_name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="service_cost" Type="Decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="service_price" Type="Decimal" Precision="6" Scale="2" Nullable="false" />
+          <NavigationProperty Name="service_request" Relationship="Self.r_19" FromRole="additional_service" ToRole="service_request" />
+        </EntityType>
+        <EntityType Name="cleaning_schedule">
+          <Key>
+            <PropertyRef Name="cleaning_schedule_id" />
+          </Key>
+          <Property Name="cleaning_schedule_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cleaning_start_time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="cleaning_end_time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="room_id" Type="Int32" Nullable="false" />
+          <Property Name="employee_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="room" Relationship="Self.r_15" FromRole="cleaning_schedule" ToRole="room" />
+          <NavigationProperty Name="employee" Relationship="Self.r_16" FromRole="cleaning_schedule" ToRole="employee" />
+        </EntityType>
+        <EntityType Name="client">
+          <Key>
+            <PropertyRef Name="client_id" />
+          </Key>
+          <Property Name="client_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="client_first_name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="client_last_name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="client_middle_name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="client_phone_number" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="client_email" Type="String" MaxLength="90" FixedLength="false" Unicode="false" />
+          <Property Name="client_passport_serial_number" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="client_notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="client_type_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="client_type" Relationship="Self.r_11" FromRole="client" ToRole="client_type" />
+          <NavigationProperty Name="reservation" Relationship="Self.r_7" FromRole="client" ToRole="reservation" />
+        </EntityType>
+        <EntityType Name="client_type">
+          <Key>
+            <PropertyRef Name="client_type_id" />
+          </Key>
+          <Property Name="client_type_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="client_type_name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="discount" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="client" Relationship="Self.r_11" FromRole="client_type" ToRole="client" />
+        </EntityType>
+        <EntityType Name="credential">
+          <Key>
+            <PropertyRef Name="credential_id" />
+          </Key>
+          <Property Name="credential_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="employee_id" Type="Int32" />
+          <Property Name="username" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="employee" Relationship="Self.f_1" FromRole="credential" ToRole="employee" />
+        </EntityType>
+        <EntityType Name="employee">
+          <Key>
+            <PropertyRef Name="employee_id" />
+          </Key>
+          <Property Name="employee_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="employye_first_name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="employye_middle_name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="employee_last_name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="employee_phone_number" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="employee_passport_serial_number" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="tax_payer_id" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="wage" Type="Decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="position_id" Type="Int32" Nullable="false" />
+          <Property Name="employee_email" Type="String" MaxLength="90" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="cleaning_schedule" Relationship="Self.r_16" FromRole="employee" ToRole="cleaning_schedule" />
+          <NavigationProperty Name="credential" Relationship="Self.f_1" FromRole="employee" ToRole="credential" />
+          <NavigationProperty Name="reservation" Relationship="Self.r_14" FromRole="employee" ToRole="reservation" />
+          <NavigationProperty Name="working_schedule" Relationship="Self.r_17" FromRole="employee" ToRole="working_schedule" />
+          <NavigationProperty Name="employee_position" Relationship="Self.r_18" FromRole="employee" ToRole="employee_position" />
+          <NavigationProperty Name="service_request" Relationship="Self.r_24" FromRole="employee" ToRole="service_request" />
+        </EntityType>
+        <EntityType Name="employee_position">
+          <Key>
+            <PropertyRef Name="position_id" />
+          </Key>
+          <Property Name="position_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="position_name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="position_description" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="wage_lower_bound" Type="Decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="wage_upper_bound" Type="Decimal" Precision="6" Scale="2" Nullable="false" />
+          <NavigationProperty Name="employee" Relationship="Self.r_18" FromRole="employee_position" ToRole="employee" />
+        </EntityType>
+        <EntityType Name="entrance_log">
+          <Key>
+            <PropertyRef Name="entrance_log_id" />
+          </Key>
+          <Property Name="entrance_log_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="log_time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="parking_spot_id" Type="Int32" Nullable="false" />
+          <Property Name="status" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="parking_spot" Relationship="Self.FK__entrance___parki__6EF57B66" FromRole="entrance_log" ToRole="parking_spot" />
+        </EntityType>
+        <EntityType Name="parking_spot">
+          <Key>
+            <PropertyRef Name="parking_spot_id" />
+          </Key>
+          <Property Name="parking_spot_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="number" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="type_id" Type="Int32" />
+          <Property Name="reservation_id" Type="Int32" />
+          <NavigationProperty Name="entrance_log" Relationship="Self.FK__entrance___parki__6EF57B66" FromRole="parking_spot" ToRole="entrance_log" />
+          <NavigationProperty Name="reservation" Relationship="Self.FK__parking_s__reser__6B24EA82" FromRole="parking_spot" ToRole="reservation" />
+          <NavigationProperty Name="parking_type" Relationship="Self.FK__parking_s__type___693CA210" FromRole="parking_spot" ToRole="parking_type" />
+        </EntityType>
+        <EntityType Name="parking_type">
+          <Key>
+            <PropertyRef Name="parking_type_id" />
+          </Key>
+          <Property Name="parking_type_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="width" Type="Decimal" Precision="3" Scale="1" Nullable="false" />
+          <Property Name="length" Type="Decimal" Precision="3" Scale="1" Nullable="false" />
+          <Property Name="weight" Type="Decimal" Precision="6" Scale="1" Nullable="false" />
+          <Property Name="price_per_day" Type="Decimal" Precision="5" Scale="2" Nullable="false" />
+          <NavigationProperty Name="parking_spot" Relationship="Self.FK__parking_s__type___693CA210" FromRole="parking_type" ToRole="parking_spot" />
+        </EntityType>
+        <EntityType Name="payment">
+          <Key>
+            <PropertyRef Name="payment_id" />
+          </Key>
+          <Property Name="payment_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="payment_sum" Type="Decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="payment_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="reservation_id" Type="Int32" Nullable="false" />
+          <Property Name="payment_type_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="reservation" Relationship="Self.r_22" FromRole="payment" ToRole="reservation" />
+          <NavigationProperty Name="payment_type" Relationship="Self.r_23" FromRole="payment" ToRole="payment_type" />
+        </EntityType>
+        <EntityType Name="payment_type">
+          <Key>
+            <PropertyRef Name="payment_type_id" />
+          </Key>
+          <Property Name="payment_type_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="payment_name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="payment" Relationship="Self.r_23" FromRole="payment_type" ToRole="payment" />
+        </EntityType>
+        <EntityType Name="reservation">
+          <Key>
+            <PropertyRef Name="reservation_id" />
+          </Key>
+          <Property Name="reservation_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="reservation_number" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="check_in_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="check_out_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="room_id" Type="Int32" Nullable="false" />
+          <Property Name="employee_id" Type="Int32" Nullable="false" />
+          <Property Name="client_id" Type="Int32" />
+          <NavigationProperty Name="client" Relationship="Self.r_7" FromRole="reservation" ToRole="client" />
+          <NavigationProperty Name="employee" Relationship="Self.r_14" FromRole="reservation" ToRole="employee" />
+          <NavigationProperty Name="parking_spot" Relationship="Self.FK__parking_s__reser__6B24EA82" FromRole="reservation" ToRole="parking_spot" />
+          <NavigationProperty Name="payment" Relationship="Self.r_22" FromRole="reservation" ToRole="payment" />
+          <NavigationProperty Name="room" Relationship="Self.r_12" FromRole="reservation" ToRole="room" />
+          <NavigationProperty Name="service_request" Relationship="Self.r_21" FromRole="reservation" ToRole="service_request" />
+        </EntityType>
+        <EntityType Name="room">
+          <Key>
+            <PropertyRef Name="room_id" />
+          </Key>
+          <Property Name="room_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="room_number" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="room_description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="room_price" Type="Decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="room_type_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="cleaning_schedule" Relationship="Self.r_15" FromRole="room" ToRole="cleaning_schedule" />
+          <NavigationProperty Name="reservation" Relationship="Self.r_12" FromRole="room" ToRole="reservation" />
+          <NavigationProperty Name="room_type" Relationship="Self.r_13" FromRole="room" ToRole="room_type" />
+        </EntityType>
+        <EntityType Name="room_type">
+          <Key>
+            <PropertyRef Name="room_type_id" />
+          </Key>
+          <Property Name="room_type_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="room_type_name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="room_type_description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="room" Relationship="Self.r_13" FromRole="room_type" ToRole="room" />
+        </EntityType>
+        <EntityType Name="service_request">
+          <Key>
+            <PropertyRef Name="service_request_id" />
+          </Key>
+          <Property Name="service_request_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="amount" Type="Int32" Nullable="false" />
+          <Property Name="service_provided_time" Type="DateTime" Precision="3" />
+          <Property Name="additional_service_id" Type="Int32" Nullable="false" />
+          <Property Name="reservation_id" Type="Int32" Nullable="false" />
+          <Property Name="employee_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="additional_service" Relationship="Self.r_19" FromRole="service_request" ToRole="additional_service" />
+          <NavigationProperty Name="employee" Relationship="Self.r_24" FromRole="service_request" ToRole="employee" />
+          <NavigationProperty Name="reservation" Relationship="Self.r_21" FromRole="service_request" ToRole="reservation" />
+        </EntityType>
+        <EntityType Name="working_schedule">
+          <Key>
+            <PropertyRef Name="working_schedule_id" />
+          </Key>
+          <Property Name="working_schedule_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="shift_start_time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="shift_end_time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="employee_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="employee" Relationship="Self.r_17" FromRole="working_schedule" ToRole="employee" />
+        </EntityType>
+        <Association Name="r_19">
+          <End Role="additional_service" Type="Self.additional_service" Multiplicity="1" />
+          <End Role="service_request" Type="Self.service_request" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="additional_service">
+              <PropertyRef Name="additional_service_id" />
+            </Principal>
+            <Dependent Role="service_request">
+              <PropertyRef Name="additional_service_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="r_15">
+          <End Role="room" Type="Self.room" Multiplicity="1" />
+          <End Role="cleaning_schedule" Type="Self.cleaning_schedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="room">
+              <PropertyRef Name="room_id" />
+            </Principal>
+            <Dependent Role="cleaning_schedule">
+              <PropertyRef Name="room_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="r_16">
+          <End Role="employee" Type="Self.employee" Multiplicity="1" />
+          <End Role="cleaning_schedule" Type="Self.cleaning_schedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="employee">
+              <PropertyRef Name="employee_id" />
+            </Principal>
+            <Dependent Role="cleaning_schedule">
+              <PropertyRef Name="employee_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="r_11">
+          <End Role="client_type" Type="Self.client_type" Multiplicity="1" />
+          <End Role="client" Type="Self.client" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="client_type">
+              <PropertyRef Name="client_type_id" />
+            </Principal>
+            <Dependent Role="client">
+              <PropertyRef Name="client_type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="r_7">
+          <End Role="client" Type="Self.client" Multiplicity="0..1" />
+          <End Role="reservation" Type="Self.reservation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="client">
+              <PropertyRef Name="client_id" />
+            </Principal>
+            <Dependent Role="reservation">
+              <PropertyRef Name="client_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="f_1">
+          <End Role="employee" Type="Self.employee" Multiplicity="0..1" />
+          <End Role="credential" Type="Self.credential" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="employee">
+              <PropertyRef Name="employee_id" />
+            </Principal>
+            <Dependent Role="credential">
+              <PropertyRef Name="employee_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="r_14">
+          <End Role="employee" Type="Self.employee" Multiplicity="1" />
+          <End Role="reservation" Type="Self.reservation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="employee">
+              <PropertyRef Name="employee_id" />
+            </Principal>
+            <Dependent Role="reservation">
+              <PropertyRef Name="employee_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="r_17">
+          <End Role="employee" Type="Self.employee" Multiplicity="1" />
+          <End Role="working_schedule" Type="Self.working_schedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="employee">
+              <PropertyRef Name="employee_id" />
+            </Principal>
+            <Dependent Role="working_schedule">
+              <PropertyRef Name="employee_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="r_18">
+          <End Role="employee_position" Type="Self.employee_position" Multiplicity="1" />
+          <End Role="employee" Type="Self.employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="employee_position">
+              <PropertyRef Name="position_id" />
+            </Principal>
+            <Dependent Role="employee">
+              <PropertyRef Name="position_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="r_24">
+          <End Role="employee" Type="Self.employee" Multiplicity="1" />
+          <End Role="service_request" Type="Self.service_request" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="employee">
+              <PropertyRef Name="employee_id" />
+            </Principal>
+            <Dependent Role="service_request">
+              <PropertyRef Name="employee_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__entrance___parki__6EF57B66">
+          <End Role="parking_spot" Type="Self.parking_spot" Multiplicity="1" />
+          <End Role="entrance_log" Type="Self.entrance_log" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="parking_spot">
+              <PropertyRef Name="parking_spot_id" />
+            </Principal>
+            <Dependent Role="entrance_log">
+              <PropertyRef Name="parking_spot_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__parking_s__reser__6B24EA82">
+          <End Role="reservation" Type="Self.reservation" Multiplicity="0..1" />
+          <End Role="parking_spot" Type="Self.parking_spot" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="reservation">
+              <PropertyRef Name="reservation_id" />
+            </Principal>
+            <Dependent Role="parking_spot">
+              <PropertyRef Name="reservation_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__parking_s__type___693CA210">
+          <End Role="parking_type" Type="Self.parking_type" Multiplicity="0..1" />
+          <End Role="parking_spot" Type="Self.parking_spot" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="parking_type">
+              <PropertyRef Name="parking_type_id" />
+            </Principal>
+            <Dependent Role="parking_spot">
+              <PropertyRef Name="type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="r_22">
+          <End Role="reservation" Type="Self.reservation" Multiplicity="1" />
+          <End Role="payment" Type="Self.payment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="reservation">
+              <PropertyRef Name="reservation_id" />
+            </Principal>
+            <Dependent Role="payment">
+              <PropertyRef Name="reservation_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="r_23">
+          <End Role="payment_type" Type="Self.payment_type" Multiplicity="1" />
+          <End Role="payment" Type="Self.payment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="payment_type">
+              <PropertyRef Name="payment_type_id" />
+            </Principal>
+            <Dependent Role="payment">
+              <PropertyRef Name="payment_type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="r_12">
+          <End Role="room" Type="Self.room" Multiplicity="1" />
+          <End Role="reservation" Type="Self.reservation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="room">
+              <PropertyRef Name="room_id" />
+            </Principal>
+            <Dependent Role="reservation">
+              <PropertyRef Name="room_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="r_21">
+          <End Role="reservation" Type="Self.reservation" Multiplicity="1" />
+          <End Role="service_request" Type="Self.service_request" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="reservation">
+              <PropertyRef Name="reservation_id" />
+            </Principal>
+            <Dependent Role="service_request">
+              <PropertyRef Name="reservation_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="r_13">
+          <End Role="room_type" Type="Self.room_type" Multiplicity="1" />
+          <End Role="room" Type="Self.room" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="room_type">
+              <PropertyRef Name="room_type_id" />
+            </Principal>
+            <Dependent Role="room">
+              <PropertyRef Name="room_type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="hotel_newEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="additional_service" EntityType="Self.additional_service" />
+          <EntitySet Name="cleaning_schedule" EntityType="Self.cleaning_schedule" />
+          <EntitySet Name="client" EntityType="Self.client" />
+          <EntitySet Name="client_type" EntityType="Self.client_type" />
+          <EntitySet Name="credential" EntityType="Self.credential" />
+          <EntitySet Name="employee" EntityType="Self.employee" />
+          <EntitySet Name="employee_position" EntityType="Self.employee_position" />
+          <EntitySet Name="entrance_log" EntityType="Self.entrance_log" />
+          <EntitySet Name="parking_spot" EntityType="Self.parking_spot" />
+          <EntitySet Name="parking_type" EntityType="Self.parking_type" />
+          <EntitySet Name="payment" EntityType="Self.payment" />
+          <EntitySet Name="payment_type" EntityType="Self.payment_type" />
+          <EntitySet Name="reservation" EntityType="Self.reservation" />
+          <EntitySet Name="room" EntityType="Self.room" />
+          <EntitySet Name="room_type" EntityType="Self.room_type" />
+          <EntitySet Name="service_request" EntityType="Self.service_request" />
+          <EntitySet Name="working_schedule" EntityType="Self.working_schedule" />
+          <AssociationSet Name="r_19" Association="Self.r_19">
+            <End Role="additional_service" EntitySet="additional_service" />
+            <End Role="service_request" EntitySet="service_request" />
+          </AssociationSet>
+          <AssociationSet Name="r_15" Association="Self.r_15">
+            <End Role="room" EntitySet="room" />
+            <End Role="cleaning_schedule" EntitySet="cleaning_schedule" />
+          </AssociationSet>
+          <AssociationSet Name="r_16" Association="Self.r_16">
+            <End Role="employee" EntitySet="employee" />
+            <End Role="cleaning_schedule" EntitySet="cleaning_schedule" />
+          </AssociationSet>
+          <AssociationSet Name="r_11" Association="Self.r_11">
+            <End Role="client_type" EntitySet="client_type" />
+            <End Role="client" EntitySet="client" />
+          </AssociationSet>
+          <AssociationSet Name="r_7" Association="Self.r_7">
+            <End Role="client" EntitySet="client" />
+            <End Role="reservation" EntitySet="reservation" />
+          </AssociationSet>
+          <AssociationSet Name="f_1" Association="Self.f_1">
+            <End Role="employee" EntitySet="employee" />
+            <End Role="credential" EntitySet="credential" />
+          </AssociationSet>
+          <AssociationSet Name="r_14" Association="Self.r_14">
+            <End Role="employee" EntitySet="employee" />
+            <End Role="reservation" EntitySet="reservation" />
+          </AssociationSet>
+          <AssociationSet Name="r_17" Association="Self.r_17">
+            <End Role="employee" EntitySet="employee" />
+            <End Role="working_schedule" EntitySet="working_schedule" />
+          </AssociationSet>
+          <AssociationSet Name="r_18" Association="Self.r_18">
+            <End Role="employee_position" EntitySet="employee_position" />
+            <End Role="employee" EntitySet="employee" />
+          </AssociationSet>
+          <AssociationSet Name="r_24" Association="Self.r_24">
+            <End Role="employee" EntitySet="employee" />
+            <End Role="service_request" EntitySet="service_request" />
+          </AssociationSet>
+          <AssociationSet Name="FK__entrance___parki__6EF57B66" Association="Self.FK__entrance___parki__6EF57B66">
+            <End Role="parking_spot" EntitySet="parking_spot" />
+            <End Role="entrance_log" EntitySet="entrance_log" />
+          </AssociationSet>
+          <AssociationSet Name="FK__parking_s__reser__6B24EA82" Association="Self.FK__parking_s__reser__6B24EA82">
+            <End Role="reservation" EntitySet="reservation" />
+            <End Role="parking_spot" EntitySet="parking_spot" />
+          </AssociationSet>
+          <AssociationSet Name="FK__parking_s__type___693CA210" Association="Self.FK__parking_s__type___693CA210">
+            <End Role="parking_type" EntitySet="parking_type" />
+            <End Role="parking_spot" EntitySet="parking_spot" />
+          </AssociationSet>
+          <AssociationSet Name="r_22" Association="Self.r_22">
+            <End Role="reservation" EntitySet="reservation" />
+            <End Role="payment" EntitySet="payment" />
+          </AssociationSet>
+          <AssociationSet Name="r_23" Association="Self.r_23">
+            <End Role="payment_type" EntitySet="payment_type" />
+            <End Role="payment" EntitySet="payment" />
+          </AssociationSet>
+          <AssociationSet Name="r_12" Association="Self.r_12">
+            <End Role="room" EntitySet="room" />
+            <End Role="reservation" EntitySet="reservation" />
+          </AssociationSet>
+          <AssociationSet Name="r_21" Association="Self.r_21">
+            <End Role="reservation" EntitySet="reservation" />
+            <End Role="service_request" EntitySet="service_request" />
+          </AssociationSet>
+          <AssociationSet Name="r_13" Association="Self.r_13">
+            <End Role="room_type" EntitySet="room_type" />
+            <End Role="room" EntitySet="room" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище hotel_newModelContainer" CdmEntityContainer="hotel_newEntities">
+          <EntitySetMapping Name="additional_service">
+            <EntityTypeMapping TypeName="hotel_newModel.additional_service">
+              <MappingFragment StoreEntitySet="additional_service">
+                <ScalarProperty Name="additional_service_id" ColumnName="additional_service_id" />
+                <ScalarProperty Name="service_name" ColumnName="service_name" />
+                <ScalarProperty Name="service_cost" ColumnName="service_cost" />
+                <ScalarProperty Name="service_price" ColumnName="service_price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="cleaning_schedule">
+            <EntityTypeMapping TypeName="hotel_newModel.cleaning_schedule">
+              <MappingFragment StoreEntitySet="cleaning_schedule">
+                <ScalarProperty Name="cleaning_schedule_id" ColumnName="cleaning_schedule_id" />
+                <ScalarProperty Name="cleaning_start_time" ColumnName="cleaning_start_time" />
+                <ScalarProperty Name="cleaning_end_time" ColumnName="cleaning_end_time" />
+                <ScalarProperty Name="room_id" ColumnName="room_id" />
+                <ScalarProperty Name="employee_id" ColumnName="employee_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="client">
+            <EntityTypeMapping TypeName="hotel_newModel.client">
+              <MappingFragment StoreEntitySet="client">
+                <ScalarProperty Name="client_id" ColumnName="client_id" />
+                <ScalarProperty Name="client_first_name" ColumnName="client_first_name" />
+                <ScalarProperty Name="client_last_name" ColumnName="client_last_name" />
+                <ScalarProperty Name="client_middle_name" ColumnName="client_middle_name" />
+                <ScalarProperty Name="client_phone_number" ColumnName="client_phone_number" />
+                <ScalarProperty Name="client_email" ColumnName="client_email" />
+                <ScalarProperty Name="client_passport_serial_number" ColumnName="client_passport_serial_number" />
+                <ScalarProperty Name="client_notes" ColumnName="client_notes" />
+                <ScalarProperty Name="client_type_id" ColumnName="client_type_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="client_type">
+            <EntityTypeMapping TypeName="hotel_newModel.client_type">
+              <MappingFragment StoreEntitySet="client_type">
+                <ScalarProperty Name="client_type_id" ColumnName="client_type_id" />
+                <ScalarProperty Name="client_type_name" ColumnName="client_type_name" />
+                <ScalarProperty Name="discount" ColumnName="discount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="credential">
+            <EntityTypeMapping TypeName="hotel_newModel.credential">
+              <MappingFragment StoreEntitySet="credential">
+                <ScalarProperty Name="credential_id" ColumnName="credential_id" />
+                <ScalarProperty Name="employee_id" ColumnName="employee_id" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="password" ColumnName="password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="employee">
+            <EntityTypeMapping TypeName="hotel_newModel.employee">
+              <MappingFragment StoreEntitySet="employee">
+                <ScalarProperty Name="employee_id" ColumnName="employee_id" />
+                <ScalarProperty Name="employye_first_name" ColumnName="employye_first_name" />
+                <ScalarProperty Name="employye_middle_name" ColumnName="employye_middle_name" />
+                <ScalarProperty Name="employee_last_name" ColumnName="employee_last_name" />
+                <ScalarProperty Name="employee_phone_number" ColumnName="employee_phone_number" />
+                <ScalarProperty Name="employee_passport_serial_number" ColumnName="employee_passport_serial_number" />
+                <ScalarProperty Name="tax_payer_id" ColumnName="tax_payer_id" />
+                <ScalarProperty Name="wage" ColumnName="wage" />
+                <ScalarProperty Name="position_id" ColumnName="position_id" />
+                <ScalarProperty Name="employee_email" ColumnName="employee_email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="employee_position">
+            <EntityTypeMapping TypeName="hotel_newModel.employee_position">
+              <MappingFragment StoreEntitySet="employee_position">
+                <ScalarProperty Name="position_id" ColumnName="position_id" />
+                <ScalarProperty Name="position_name" ColumnName="position_name" />
+                <ScalarProperty Name="position_description" ColumnName="position_description" />
+                <ScalarProperty Name="wage_lower_bound" ColumnName="wage_lower_bound" />
+                <ScalarProperty Name="wage_upper_bound" ColumnName="wage_upper_bound" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="entrance_log">
+            <EntityTypeMapping TypeName="hotel_newModel.entrance_log">
+              <MappingFragment StoreEntitySet="entrance_log">
+                <ScalarProperty Name="entrance_log_id" ColumnName="entrance_log_id" />
+                <ScalarProperty Name="log_time" ColumnName="log_time" />
+                <ScalarProperty Name="parking_spot_id" ColumnName="parking_spot_id" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="parking_spot">
+            <EntityTypeMapping TypeName="hotel_newModel.parking_spot">
+              <MappingFragment StoreEntitySet="parking_spot">
+                <ScalarProperty Name="parking_spot_id" ColumnName="parking_spot_id" />
+                <ScalarProperty Name="number" ColumnName="number" />
+                <ScalarProperty Name="type_id" ColumnName="type_id" />
+                <ScalarProperty Name="reservation_id" ColumnName="reservation_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="parking_type">
+            <EntityTypeMapping TypeName="hotel_newModel.parking_type">
+              <MappingFragment StoreEntitySet="parking_type">
+                <ScalarProperty Name="parking_type_id" ColumnName="parking_type_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="width" ColumnName="width" />
+                <ScalarProperty Name="length" ColumnName="length" />
+                <ScalarProperty Name="weight" ColumnName="weight" />
+                <ScalarProperty Name="price_per_day" ColumnName="price_per_day" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="payment">
+            <EntityTypeMapping TypeName="hotel_newModel.payment">
+              <MappingFragment StoreEntitySet="payment">
+                <ScalarProperty Name="payment_id" ColumnName="payment_id" />
+                <ScalarProperty Name="payment_sum" ColumnName="payment_sum" />
+                <ScalarProperty Name="payment_date" ColumnName="payment_date" />
+                <ScalarProperty Name="reservation_id" ColumnName="reservation_id" />
+                <ScalarProperty Name="payment_type_id" ColumnName="payment_type_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="payment_type">
+            <EntityTypeMapping TypeName="hotel_newModel.payment_type">
+              <MappingFragment StoreEntitySet="payment_type">
+                <ScalarProperty Name="payment_type_id" ColumnName="payment_type_id" />
+                <ScalarProperty Name="payment_name" ColumnName="payment_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="reservation">
+            <EntityTypeMapping TypeName="hotel_newModel.reservation">
+              <MappingFragment StoreEntitySet="reservation">
+                <ScalarProperty Name="reservation_id" ColumnName="reservation_id" />
+                <ScalarProperty Name="reservation_number" ColumnName="reservation_number" />
+                <ScalarProperty Name="check_in_date" ColumnName="check_in_date" />
+                <ScalarProperty Name="check_out_date" ColumnName="check_out_date" />
+                <ScalarProperty Name="room_id" ColumnName="room_id" />
+                <ScalarProperty Name="employee_id" ColumnName="employee_id" />
+                <ScalarProperty Name="client_id" ColumnName="client_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="room">
+            <EntityTypeMapping TypeName="hotel_newModel.room">
+              <MappingFragment StoreEntitySet="room">
+                <ScalarProperty Name="room_id" ColumnName="room_id" />
+                <ScalarProperty Name="room_number" ColumnName="room_number" />
+                <ScalarProperty Name="room_description" ColumnName="room_description" />
+                <ScalarProperty Name="room_price" ColumnName="room_price" />
+                <ScalarProperty Name="room_type_id" ColumnName="room_type_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="room_type">
+            <EntityTypeMapping TypeName="hotel_newModel.room_type">
+              <MappingFragment StoreEntitySet="room_type">
+                <ScalarProperty Name="room_type_id" ColumnName="room_type_id" />
+                <ScalarProperty Name="room_type_name" ColumnName="room_type_name" />
+                <ScalarProperty Name="room_type_description" ColumnName="room_type_description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="service_request">
+            <EntityTypeMapping TypeName="hotel_newModel.service_request">
+              <MappingFragment StoreEntitySet="service_request">
+                <ScalarProperty Name="service_request_id" ColumnName="service_request_id" />
+                <ScalarProperty Name="amount" ColumnName="amount" />
+                <ScalarProperty Name="service_provided_time" ColumnName="service_provided_time" />
+                <ScalarProperty Name="additional_service_id" ColumnName="additional_service_id" />
+                <ScalarProperty Name="reservation_id" ColumnName="reservation_id" />
+                <ScalarProperty Name="employee_id" ColumnName="employee_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="working_schedule">
+            <EntityTypeMapping TypeName="hotel_newModel.working_schedule">
+              <MappingFragment StoreEntitySet="working_schedule">
+                <ScalarProperty Name="working_schedule_id" ColumnName="working_schedule_id" />
+                <ScalarProperty Name="shift_start_time" ColumnName="shift_start_time" />
+                <ScalarProperty Name="shift_end_time" ColumnName="shift_end_time" />
+                <ScalarProperty Name="employee_id" ColumnName="employee_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
