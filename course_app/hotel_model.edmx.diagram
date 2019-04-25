@@ -40,6 +40,7 @@
         <AssociationConnector Association="hotel_newModel.r_12" ManuallyRouted="false" />
         <AssociationConnector Association="hotel_newModel.r_21" ManuallyRouted="false" />
         <AssociationConnector Association="hotel_newModel.r_13" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="hotel_newModel.sysdiagrams" Width="1.5" PointX="12.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -6,14 +6,13 @@
 //     Manual changes to this file will be overwritten if the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-using System.Runtime.CompilerServices;
+
 namespace course_app
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
-
-    public partial class working_schedule : INotifyPropertyChanged
+    
+    public partial class working_schedule
     {
         public int working_schedule_id { get; set; }
         public System.DateTime shift_start_time { get; set; }
@@ -21,11 +20,5 @@ namespace course_app
         public int employee_id { get; set; }
     
         public virtual employee employee { get; set; }
-        public event PropertyChangedEventHandler PropertyChanged;
-        public void OnPropertyChanged([CallerMemberName]string prop = "")
-        {
-            if (PropertyChanged != null)
-                PropertyChanged(this, new PropertyChangedEventArgs(prop));
-        }
     }
 }

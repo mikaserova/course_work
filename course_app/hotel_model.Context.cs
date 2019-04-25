@@ -42,5 +42,6 @@ namespace course_app
         public virtual DbSet<room_type> room_type { get; set; }
         public virtual DbSet<service_request> service_request { get; set; }
         public virtual DbSet<working_schedule> working_schedule { get; set; }
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
     }
 }

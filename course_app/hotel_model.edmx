@@ -65,7 +65,6 @@
           <Property Name="employee_last_name" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="employee_phone_number" Type="varchar" MaxLength="15" Nullable="false" />
           <Property Name="employee_passport_serial_number" Type="varchar" MaxLength="20" Nullable="false" />
-          <Property Name="employee_pasword" Type="varchar" MaxLength="15" Nullable="false" />
           <Property Name="tax_payer_id" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="wage" Type="decimal" Precision="6" Scale="2" Nullable="false" />
           <Property Name="position_id" Type="int" Nullable="false" />
@@ -167,6 +166,16 @@
           <Property Name="additional_service_id" Type="int" Nullable="false" />
           <Property Name="reservation_id" Type="int" Nullable="false" />
           <Property Name="employee_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="working_schedule">
           <Key>
@@ -410,6 +419,7 @@
           <EntitySet Name="room" EntityType="Self.room" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="room_type" EntityType="Self.room_type" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="service_request" EntityType="Self.service_request" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="working_schedule" EntityType="Self.working_schedule" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="f_1" Association="Self.f_1">
             <End Role="employee" EntitySet="employee" />
@@ -565,7 +575,6 @@
           <NavigationProperty Name="working_schedule" Relationship="Self.r_17" FromRole="employee" ToRole="working_schedule" />
           <NavigationProperty Name="employee_position" Relationship="Self.r_18" FromRole="employee" ToRole="employee_position" />
           <NavigationProperty Name="service_request" Relationship="Self.r_24" FromRole="employee" ToRole="service_request" />
-          <Property Name="employee_pasword" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="employee_position">
           <Key>
@@ -1002,7 +1011,18 @@
             <End Role="room_type" EntitySet="room_type" />
             <End Role="room" EntitySet="room" />
           </AssociationSet>
+          <EntitySet Name="sysdiagrams" EntityType="hotel_newModel.sysdiagrams" />
         </EntityContainer>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1067,7 +1087,6 @@
           <EntitySetMapping Name="employee">
             <EntityTypeMapping TypeName="hotel_newModel.employee">
               <MappingFragment StoreEntitySet="employee">
-                <ScalarProperty Name="employee_pasword" ColumnName="employee_pasword" />
                 <ScalarProperty Name="employee_id" ColumnName="employee_id" />
                 <ScalarProperty Name="employye_first_name" ColumnName="employye_first_name" />
                 <ScalarProperty Name="employye_middle_name" ColumnName="employye_middle_name" />
@@ -1195,6 +1214,17 @@
                 <ScalarProperty Name="shift_start_time" ColumnName="shift_start_time" />
                 <ScalarProperty Name="shift_end_time" ColumnName="shift_end_time" />
                 <ScalarProperty Name="employee_id" ColumnName="employee_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="hotel_newModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

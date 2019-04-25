@@ -12,8 +12,14 @@
         <DataTemplate x:Name="ScheduleModelTemplate" DataType="{x:Type viewmodels:ScheduleModel}">
             <views:personal_schedule DataContext="{Binding}"></views:personal_schedule>
         </DataTemplate>
-        <DataTemplate x:Name="ScheduleModelTemplate" DataType="{x:Type viewmodels:GeneralSchedule}">
+        <DataTemplate x:Name="GScheduleModelTemplate" DataType="{x:Type viewmodels:GeneralSchedule}">
             <views:general_schedule DataContext="{Binding}"></views:general_schedule>
+        </DataTemplate>
+        <DataTemplate x:Name="EntranceModelTemplate" DataType="{x:Type viewmodels:EntranceTable}">
+            <views:entrance DataContext="{Binding}"></views:entrance>
+        </DataTemplate>
+        <DataTemplate x:Name="EmployeeModelTemplate" DataType="{x:Type viewmodels:EmployeeModel}">
+            <views:AddNewEmployee DataContext="{Binding}"></views:AddNewEmployee>
         </DataTemplate>
     </Window.Resources>
     <Grid>
@@ -31,8 +37,22 @@
 
         </Grid.ColumnDefinitions>
         <StackPanel Grid.Row="1">
-            <Button x:Name="schedule" Click="Schedule_Click">Personal Schedule</Button>
-            <Button x:Name="general_schedule" Click="General_schedule_Click" >General Schedule</Button>
+            <Button x:Name="schedule" Click="Schedule_Click" FontSize="18"  FontWeight="Bold">
+                <Button.Background>
+                    <SolidColorBrush Color="#FF50F0E7" Opacity="0.7"/>
+                </Button.Background> Personal Schedule</Button>
+            <Button x:Name="general_schedule" Click="General_schedule_Click" FontSize="18"  FontWeight="Bold">
+                <Button.Background>
+                    <SolidColorBrush Color="#FF50F0E7" Opacity="0.7"/>
+                </Button.Background> General Schedule</Button>
+            <Button x:Name="ent_log" Click="Ent_log_Click" FontSize="18"  FontWeight="Bold">
+                <Button.Background>
+                    <SolidColorBrush Color="#FF50F0E7" Opacity="0.7"/>
+                </Button.Background> Entrance log</Button>
+            <Button x:Name="emp_add" Click="Emp_add_Click" FontSize="18"  FontWeight="Bold">
+                <Button.Background>
+                    <SolidColorBrush Color="#FF50F0E7" Opacity="0.7"/>
+                </Button.Background> Employees</Button>
         </StackPanel>
         <ContentControl Grid.Column="1" Grid.Row="1" Background="#FFF2F4F4" Content="{Binding}"></ContentControl>
     </Grid>

@@ -34,7 +34,6 @@ namespace course_app
         public decimal wage { get; set; }
         public int position_id { get; set; }
         public string employee_email { get; set; }
-        public string employee_pasword { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<cleaning_schedule> cleaning_schedule { get; set; }
