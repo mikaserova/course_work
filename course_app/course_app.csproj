@@ -148,6 +148,7 @@
       <DependentUpon>hotel_model.tt</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\AddpaymentModel.cs" />
+    <Compile Include="ViewModel\AddProvidedModel.cs" />
     <Compile Include="ViewModel\AddREservationModel.cs" />
     <Compile Include="ViewModel\AppViewModel.cs" />
     <Compile Include="ViewModel\CleaningModel.cs" />
@@ -187,6 +188,9 @@
     </Compile>
     <Compile Include="Views\Add_position.xaml.cs">
       <DependentUpon>Add_position.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\add_provided.xaml.cs">
+      <DependentUpon>add_provided.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\add_reservation.xaml.cs">
       <DependentUpon>add_reservation.xaml</DependentUpon>
@@ -278,6 +282,9 @@
     <Compile Include="Views\update_parking_spot.xaml.cs">
       <DependentUpon>update_parking_spot.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\update_provided.xaml.cs">
+      <DependentUpon>update_provided.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\update_room.xaml.cs">
       <DependentUpon>update_room.xaml</DependentUpon>
     </Compile>
@@ -330,6 +337,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Add_position.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\add_provided.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -450,6 +461,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\update_parking_spot.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\update_provided.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
