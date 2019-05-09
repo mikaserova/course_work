@@ -30,6 +30,7 @@ namespace course_app
             {
                 MessageBox.Show("Can`t connect to database");
             }
+            GL.login_Window = this;
         }
 
         private void Enter_button_Click(object sender, RoutedEventArgs e)
@@ -40,8 +41,11 @@ namespace course_app
             if(user!=null&& pass == user.password)
             {
                 MainWindow main = new MainWindow(user.credential_id);
+                main.WindowState = System.Windows.WindowState.Maximized;
+                main.Closed += FooClosed;
                 main.Show();
-                
+                GL.main = main;
+
                 this.Hide();
             }
             else
@@ -49,6 +53,12 @@ namespace course_app
                 MessageBox.Show("Wrong email or password. Please try again");
             }
 
+        }
+        public void FooClosed(object sender, System.EventArgs e)
+        {
+            //This gets fired off
+            GL.main = null;
+            this.Close();
         }
     }
 }

@@ -16,6 +16,7 @@
 
         </Grid.RowDefinitions>
         <DataGrid x:Name="shift_table" AutoGenerateColumns="False" ItemsSource="{Binding Shifts, Mode=TwoWay}" LoadingRow="DataGrid_LoadingRow" Margin="0,0,0,3.8"  >
+            <DataGrid.RowHeight>30</DataGrid.RowHeight>
             <DataGrid.Columns>
 
                 <DataGridTextColumn Header="Starts at:" Binding="{Binding Path=shift_start_time}"></DataGridTextColumn>

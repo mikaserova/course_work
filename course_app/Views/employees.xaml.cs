@@ -29,6 +29,7 @@ namespace course_app.Views
         {
             Add addw = new Add();
             addw.Show();
+            GL.main.Emp_add_Click(sender, e);
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
@@ -37,14 +38,17 @@ namespace course_app.Views
             employee temp = GL.db.employee.Where(w => w.employee_id == t.employee_id).FirstOrDefault();
             GL.db.employee.Remove(temp);
             GL.db.SaveChanges();
+            GL.main.Emp_add_Click(GL.main, e);
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
             employee t = (employee)emp_list.SelectedValue;
+           
             if (t != null) {
                 Update updw = new Update(t);
                 updw.Show();
+                GL.main.Emp_add_Click(sender, e);
             }
             else
             {

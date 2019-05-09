@@ -33,6 +33,9 @@ namespace course_app.Views
             e.Row.Header = (e.Row.GetIndex() + 1).ToString();
         }
 
-        
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            GL.main.MenuItem_Click_1(sender, e);
+        }
     }
 }

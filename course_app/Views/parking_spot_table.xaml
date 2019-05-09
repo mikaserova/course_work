@@ -1,0 +1,123 @@
+﻿<UserControl x:Class="course_app.Views.parking_spot_table"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:course_app.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10*"/>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+
+        </Grid.RowDefinitions>
+        <Grid >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="3*"/>
+            </Grid.ColumnDefinitions>
+            <DataGrid x:Name="ent_table" AutoGenerateColumns="False" ItemsSource="{Binding parking_s}" Grid.Column="0">
+                <DataGrid.RowHeight>30</DataGrid.RowHeight>
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Spot Number" Binding="{Binding Path=number}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Spot_type"  Binding="{Binding parking_type.name}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Reservation"  Binding="{Binding reservation.reservation_number}"></DataGridTextColumn>
+                    <DataGridTextColumn  Header="Price" Binding="{Binding parking_type.price_per_day}" ></DataGridTextColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+            <StackPanel Grid.Column="1" Margin="10">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="43"/>
+                        <RowDefinition Height="43"/>
+                        <RowDefinition Height="43"/>
+                        <RowDefinition Height="43"/>
+                       
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="67*"/>
+                        <ColumnDefinition Width="133*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label FontSize="18" Foreground="#FFF2F9F8" FontWeight="Bold">       Search type:</Label>
+                    <ComboBox x:Name="what_search" ItemsSource="{Binding list_fields}" Grid.Column="1" SelectionChanged="What_search_SelectionChanged"/>
+                    <Label FontSize="18" Grid.Row="1" Foreground="#FFF2F9F8" FontWeight="Bold">Input field</Label>
+                    <TextBox x:Name="text_search" Grid.Column="1" Grid.Row="1"></TextBox>
+                    <ComboBox x:Name="box_search" Grid.Column="1" Grid.Row="1" ItemsSource="{Binding types}">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock>
+                                    <TextBlock.Text>
+                                        <MultiBinding StringFormat="{}{0} ">
+                                            <Binding Path="name"/>
+
+                                        </MultiBinding>
+                                    </TextBlock.Text>
+                                </TextBlock>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                    <ComboBox x:Name="box1_search" Grid.Column="1" Grid.Row="1" ItemsSource="{Binding reservations}">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock>
+                                    <TextBlock.Text>
+                                        <MultiBinding StringFormat="{}{0} ">
+                                            <Binding Path="reservation_number"/>
+
+                                        </MultiBinding>
+                                    </TextBlock.Text>
+                                </TextBlock>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                    <Button   Click="Button_Click_4" Grid.Row="2" Grid.Column="1" >Search</Button>
+                    <Button  Grid.Row="3" Grid.Column="1"  Click="Button_Click_5" >Clear</Button>
+                    <Label FontSize="18" Grid.Row="4" Foreground="#FFF2F9F8" FontWeight="Bold" Grid.ColumnSpan="2" HorizontalAlignment="Center">Result</Label>
+                    <ListView x:Name="reservations" ItemsSource="{Binding res_list}" Grid.Row="10" Grid.ColumnSpan="3"></ListView>
+                    <ListBox x:Name="search_list" Grid.Row="5" Grid.ColumnSpan="3">
+                        
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock>
+                                    <TextBlock.Text>
+                                        <MultiBinding StringFormat="{}{0}  {1}  {2}  ">
+                                            <Binding Path="number"/>
+                                            <Binding Path="parking_type.name"/>
+                                            <Binding Path="reservation.reservation_number"/>
+
+                                        </MultiBinding>
+                                    </TextBlock.Text>
+                                </TextBlock>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </Grid>
+            </StackPanel>
+        </Grid>
+
+        <Button Grid.Row="1" Background="{x:Null}" FontSize="18" Foreground="#FFF2F9F8" FontWeight="Bold" Click="Button_Click_1" >Manage parking types</Button>
+        <Grid Grid.Row="2">
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+
+
+
+            </Grid.ColumnDefinitions>
+
+
+            <Button Grid.Column="0" Click="Button_Click" >Add</Button>
+            <Button Grid.Column="1" Click="Button_Click_2" >Update</Button>
+            <Button Grid.Column="2" Click="Button_Click_3">Delete</Button>
+        </Grid>
+    </Grid>
+</UserControl>

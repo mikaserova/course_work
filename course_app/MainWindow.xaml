@@ -7,10 +7,14 @@
         xmlns:viewmodels="clr-namespace:course_app.ViewModel"
         xmlns:views="clr-namespace:course_app.Views"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Hotel Administration System">
+    
     <Window.Resources>
         <DataTemplate x:Name="ScheduleModelTemplate" DataType="{x:Type viewmodels:ScheduleModel}">
             <views:personal_schedule DataContext="{Binding}"></views:personal_schedule>
+        </DataTemplate>
+        <DataTemplate x:Name="ParkingModelTemplate" DataType="{x:Type viewmodels:ParkingSpotsModel}">
+            <views:parking_spot_table DataContext="{Binding}"></views:parking_spot_table>
         </DataTemplate>
         <DataTemplate x:Name="GScheduleModelTemplate" DataType="{x:Type viewmodels:GeneralSchedule}">
             <views:general_schedule DataContext="{Binding}"></views:general_schedule>
@@ -21,6 +25,56 @@
         <DataTemplate x:Name="EmployeeModelTemplate" DataType="{x:Type viewmodels:EmployeeModel}">
             <views:AddNewEmployee DataContext="{Binding}"></views:AddNewEmployee>
         </DataTemplate>
+        <DataTemplate x:Name="ProfileTemplate" DataType="{x:Type viewmodels:ProfileModel}">
+            <views:Profile DataContext="{Binding}"></views:Profile>
+        </DataTemplate>
+        <DataTemplate x:Name="PositionTemplate" DataType="{x:Type viewmodels:PositionModel}">
+            <views:Emp_pos DataContext="{Binding}"></views:Emp_pos>
+        </DataTemplate>
+        <DataTemplate x:Name="RoomTemplate" DataType="{x:Type viewmodels:RoomModel}">
+            <views:room_table DataContext="{Binding}"></views:room_table>
+        </DataTemplate>
+        <DataTemplate x:Name="RoomTypeTemplate" DataType="{x:Type viewmodels:RoomTypeModel}">
+            <views:room_types DataContext="{Binding}"></views:room_types>
+        </DataTemplate>
+        <DataTemplate x:Name="ServicesTemplate" DataType="{x:Type viewmodels:ServicesModel}">
+            <views:services DataContext="{Binding}"></views:services>
+            
+        </DataTemplate>
+        <DataTemplate x:Name="CleaningTemplate" DataType="{x:Type viewmodels:CleaningModel}">
+            <views:cleaning DataContext="{Binding}"></views:cleaning>
+        </DataTemplate>
+        <DataTemplate x:Name="ClientTemplate" DataType="{x:Type viewmodels:ClientModel}">
+            <views:clients DataContext="{Binding}"></views:clients>
+        </DataTemplate>
+        <DataTemplate x:Name="ClientTypeTemplate" DataType="{x:Type viewmodels:ClientTypeModel}">
+            <views:client_types DataContext="{Binding}"></views:client_types>
+        </DataTemplate>
+        <DataTemplate x:Name="ParkingTypeTemplate" DataType="{x:Type viewmodels:ParkingTypeModel}">
+            <views:parking_types DataContext="{Binding}"></views:parking_types>
+        </DataTemplate>
+        <DataTemplate x:Name="ReservationTemplate" DataType="{x:Type viewmodels:ReservationModel}">
+            <views:reservations DataContext="{Binding}"></views:reservations>
+        </DataTemplate>
+        <DataTemplate x:Name="CostStatTemplate" DataType="{x:Type viewmodels:CostStatModel}">
+            <views:Statistics DataContext="{Binding}"></views:Statistics>
+        </DataTemplate>
+        <DataTemplate x:Name="CurrPayTemplate" DataType="{x:Type viewmodels:currPaymentModel}">
+            <views:CurrPayment DataContext="{Binding}"></views:CurrPayment>
+        </DataTemplate>
+        <DataTemplate x:Name="PayTemplate" DataType="{x:Type viewmodels:PaymentMOdel}">
+            <views:AllPayments DataContext="{Binding}"></views:AllPayments>
+        </DataTemplate>
+        <DataTemplate x:Name="PersCleanTemplate" DataType="{x:Type viewmodels:PersCleanModel}">
+            <views:Personal_cleaning DataContext="{Binding}"></views:Personal_cleaning>
+        </DataTemplate>
+        <DataTemplate x:Name="IncomeTemplate" DataType="{x:Type viewmodels:IncomeModel}">
+            <views:Income DataContext="{Binding}"></views:Income>
+        </DataTemplate>
+        <DataTemplate x:Name="ProvidedServiceTemplate" DataType="{x:Type viewmodels:ProvidedServices}">
+            <views:providedS DataContext="{Binding}"></views:providedS>
+        </DataTemplate>
+
     </Window.Resources>
     <Grid>
         <Grid.Background>
@@ -32,28 +86,85 @@
 
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="159*"></ColumnDefinition>
-            <ColumnDefinition Width="634*"></ColumnDefinition>
+            <ColumnDefinition Width="11*"></ColumnDefinition>
+            <ColumnDefinition Width="243*"></ColumnDefinition>
 
         </Grid.ColumnDefinitions>
-        <StackPanel Grid.Row="1">
-            <Button x:Name="schedule" Click="Schedule_Click" FontSize="18"  FontWeight="Bold">
-                <Button.Background>
-                    <SolidColorBrush Color="#FF50F0E7" Opacity="0.7"/>
-                </Button.Background> Personal Schedule</Button>
-            <Button x:Name="general_schedule" Click="General_schedule_Click" FontSize="18"  FontWeight="Bold">
-                <Button.Background>
-                    <SolidColorBrush Color="#FF50F0E7" Opacity="0.7"/>
-                </Button.Background> General Schedule</Button>
-            <Button x:Name="ent_log" Click="Ent_log_Click" FontSize="18"  FontWeight="Bold">
-                <Button.Background>
-                    <SolidColorBrush Color="#FF50F0E7" Opacity="0.7"/>
-                </Button.Background> Entrance log</Button>
-            <Button x:Name="emp_add" Click="Emp_add_Click" FontSize="18"  FontWeight="Bold">
-                <Button.Background>
-                    <SolidColorBrush Color="#FF50F0E7" Opacity="0.7"/>
-                </Button.Background> Employees</Button>
-        </StackPanel>
-        <ContentControl Grid.Column="1" Grid.Row="1" Background="#FFF2F4F4" Content="{Binding}"></ContentControl>
+        <Menu Height="25" VerticalAlignment="Top" Grid.ColumnSpan="2" Margin="0,0,-0.4,0">
+
+
+            <MenuItem Header="Profile" Click="MenuItem_Click_1" >
+                <MenuItem.Icon>
+                    <Image Source="C:\Users\Myrosia\source\repos\course_app\2ba7fff7ab74.png"></Image>
+                </MenuItem.Icon>
+            </MenuItem>
+            <MenuItem Header="HR" x:Name="HR">
+                <MenuItem.Icon>
+                    <Image Source="C:\Users\Myrosia\source\repos\course_app\icon-hr.png"></Image>
+                </MenuItem.Icon>
+                <MenuItem Header="Employees" Click="Emp_add_Click"></MenuItem>
+                <MenuItem Header="General Schedule" Click="General_schedule_Click" />
+                <MenuItem Header="Positions" Click="MenuItem_Click"></MenuItem>
+                
+
+
+            </MenuItem>
+            <MenuItem Header="Parking" x:Name="Parking">
+                <MenuItem.Icon>
+                    <Image Source="C:\Users\Myrosia\source\repos\course_app\pin-map-location-26-512.png"></Image>
+                </MenuItem.Icon>
+                <MenuItem Header=" Entrance log" Click="MenuItem_Click_7"></MenuItem>
+                <MenuItem Header=" Parking spots" Click="MenuItem_Click_4"></MenuItem>
+                
+            </MenuItem>
+            <MenuItem Header="Reservation"  x:Name="Reservation">
+                <MenuItem.Icon>
+                    <Image Source="C:\Users\Myrosia\source\repos\course_app\reservation.png"></Image>
+                </MenuItem.Icon>
+                <MenuItem Header="View all" Click="MenuItem_Click_8" ></MenuItem>
+                <MenuItem Header="Add new" Click="MenuItem_Click_9"></MenuItem>
+                <MenuItem Header="Payments" Click="MenuItem_Click_91"></MenuItem>
+
+
+                <MenuItem Header="Clients" Click="MenuItem_Click_6"></MenuItem>
+                
+            </MenuItem>
+            <MenuItem Header="Resorces and services" x:Name="Resources" >
+                <MenuItem.Icon>
+                    <Image Source="C:\Users\Myrosia\source\repos\course_app\resource.png"></Image>
+                </MenuItem.Icon>
+                <MenuItem Header=" Rooms" Click="MenuItem_Click_2"></MenuItem>
+                <MenuItem Header=" Additional services" Click="MenuItem_Click_3"></MenuItem>
+
+            </MenuItem>
+            <MenuItem Header="Cleaning" x:Name="Cleaning">
+                <MenuItem.Icon>
+                    <Image Source="C:\Users\Myrosia\source\repos\course_app\93a3bf669c.png"></Image>
+                </MenuItem.Icon>
+                <MenuItem Header=" Cleaning scedule" Click="MenuItem_Click_5"></MenuItem>
+                
+
+
+            </MenuItem>
+            <MenuItem Header="About" >
+                <MenuItem.Icon>
+                    <Image Source="C:\Users\Myrosia\source\repos\course_app\info.png"></Image>
+                </MenuItem.Icon>
+                <MenuItem Header=" About program" Click="About_Handler"></MenuItem>
+
+
+            </MenuItem>
+            <MenuItem Header="Statistics" x:Name="Statistics">
+                <MenuItem.Icon>
+                    <Image Source="C:\Users\Myrosia\source\repos\course_app\info.png"></Image>
+                </MenuItem.Icon>
+                <MenuItem Header=" Costs" Click="MenuItem_Click_10" ></MenuItem>
+                <MenuItem Header=" Income" Click="MenuItem_Click_11"></MenuItem>
+                <MenuItem Header=" profit"></MenuItem>
+
+
+            </MenuItem>
+        </Menu>
+        <ContentControl Grid.Column="1" Background="#FFF2F4F4" Content="{Binding}" Margin="14.2,70,-0.4,-0.4" Grid.RowSpan="2"/>
     </Grid>
 </Window>

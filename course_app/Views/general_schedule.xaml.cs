@@ -51,8 +51,8 @@ namespace course_app.Views
                 working_schedule temp = GL.db.working_schedule.Where(w => w.working_schedule_id == t.w_id).FirstOrDefault();
                 GL.db.working_schedule.Remove(temp);
                 GL.db.SaveChanges();
-               // shift_table.Items.Remove(t);
-               
+                // shift_table.Items.Remove(t);
+                GL.main.General_schedule_Click(GL.main, e);
 
 
             }
@@ -75,6 +75,7 @@ namespace course_app.Views
                 temp.employee_id = t.employee_id;
                 GL.db.working_schedule.Add(temp);
                 GL.db.SaveChanges();
+                GL.main.General_schedule_Click(GL.main,e);
                // shift_table.Items.Add()
             }
             catch (ArgumentException a)
@@ -132,7 +133,7 @@ namespace course_app.Views
                 GL.db.working_schedule.Add(temp1);
                 GL.db.working_schedule.Remove(temp);
                 GL.db.SaveChanges();
-
+                GL.main.General_schedule_Click(GL.main, e);
             }
 
         }

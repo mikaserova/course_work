@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:course_app"
         mc:Ignorable="d"
-        Title="Login_window" Height="450" Width="800">
+        Title="Hotel Administration System: Authorisation" Height="450" Width="800">
     <Grid>
         <Grid.Background>
             <SolidColorBrush Color="#FF060000" Opacity="0.85"/>

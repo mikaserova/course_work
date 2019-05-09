@@ -2,8 +2,10 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -28,15 +30,51 @@ namespace course_app
         //int cred_id;
         public MainWindow(int id)
         {
-            InitializeComponent();
             GL.cred_id = id;
-
+            
             GL.permission_level = SetPLevel();
+            InitializeComponent();
             if (GL.permission_level < 3)
             {
-                general_schedule.Visibility = Visibility.Collapsed;
+                HR.Visibility = Visibility.Collapsed;
+                Reservation.Visibility= Visibility.Collapsed;
+                Resources.Visibility= Visibility.Collapsed;
+                Statistics.Visibility = Visibility.Collapsed;
+                if (GL.permission_level == 2)
+                {
+                    Cleaning.Visibility = Visibility.Collapsed;
+                }
+                else
+                {
+                    Parking.Visibility = Visibility.Collapsed;
+                }
+            }else if(GL.permission_level==3)
+            {
+                HR.Visibility = Visibility.Collapsed;
+                Cleaning.Visibility = Visibility.Collapsed;
+                Parking.Visibility = Visibility.Collapsed;
+                Statistics.Visibility = Visibility.Collapsed;
             }
-          
+            else if (GL.permission_level == 4)
+            {
+                HR.Visibility = Visibility.Collapsed;
+                Cleaning.Visibility = Visibility.Collapsed;
+            }
+            else if (GL.permission_level == 5)
+            {
+                Resources.Visibility = Visibility.Collapsed;
+                Parking.Visibility = Visibility.Collapsed;
+                Reservation.Visibility = Visibility.Collapsed;
+                Statistics.Visibility= Visibility.Collapsed;
+
+            }
+               
+           
+
+        }
+        public void MWClosing(object sender, RoutedEventArgs e)
+        {
+            GL.login_Window.Close();
         }
         private int SetPLevel()
         {
@@ -49,7 +87,7 @@ namespace course_app
 
 
         }
-        private void Schedule_Click(object sender, RoutedEventArgs e)
+        public void Schedule_Click(object sender, RoutedEventArgs e)
         {
            
             var emp = GL.db.credential.Where(c => c.credential_id == GL.cred_id).FirstOrDefault();
@@ -58,7 +96,7 @@ namespace course_app
             DataContext = new ScheduleModel(shifts);
         }
 
-        private void General_schedule_Click(object sender, RoutedEventArgs e)
+        public void General_schedule_Click(object sender, RoutedEventArgs e)
         {
             
             var s = GL.db.working_schedule.Join(GL.db.employee, eid => eid.employee_id, wid => wid.employee_id,
@@ -81,14 +119,97 @@ namespace course_app
             DataContext = new GeneralSchedule(ew);
         }
 
-        private void Ent_log_Click(object sender, RoutedEventArgs e)
+        public void Ent_log_Click(object sender, RoutedEventArgs e)
         {
             DataContext = new EntranceTable();
         }
 
-        private void Emp_add_Click(object sender, RoutedEventArgs e)
+        public void Emp_add_Click(object sender, RoutedEventArgs e)
         {
             DataContext = new EmployeeModel();
+        }
+        public void BTN_Click(object sender, RoutedEventArgs e)
+        {
+            DataContext = new RoomTypeModel();
+        }
+
+        public void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            DataContext = new PositionModel();
+        }
+
+        public void MenuItem_Click_1(object sender, RoutedEventArgs e)
+        {
+            DataContext = new ProfileModel();
+        }
+
+        public void MenuItem_Click_2(object sender, RoutedEventArgs e)
+        {
+            DataContext = new RoomModel();
+        }
+
+        public void MenuItem_Click_3(object sender, RoutedEventArgs e)
+        {
+            DataContext = new ServicesModel();
+        }
+
+        public void MenuItem_Click_4(object sender, RoutedEventArgs e)
+        {
+            DataContext = new ParkingSpotsModel();
+        }
+
+        public void MenuItem_Click_5(object sender, RoutedEventArgs e)
+        {
+            DataContext = new CleaningModel();
+        }
+
+        public void MenuItem_Click_6(object sender, RoutedEventArgs e)
+        {
+            DataContext = new ClientModel();
+        }
+        public void client_t(object sender, RoutedEventArgs e)
+        {
+            DataContext = new ClientTypeModel();
+        }
+        public void parking_t(object sender, RoutedEventArgs e)
+        {
+            DataContext = new ParkingTypeModel();
+        }
+
+        public void MenuItem_Click_7(object sender, RoutedEventArgs e)
+        {
+            DataContext = new EntranceTable();
+        }
+
+        public void MenuItem_Click_8(object sender, RoutedEventArgs e)
+        {
+            DataContext = new ReservationModel();
+        }
+
+        public void MenuItem_Click_9(object sender, RoutedEventArgs e)
+        {
+            course_app.Views.add_reservation w = new Views.add_reservation();
+            w.Show();
+        }
+
+        public void MenuItem_Click_10(object sender, RoutedEventArgs e)
+        {
+            DataContext = new CostStatModel();
+        }
+
+        public void MenuItem_Click_91(object sender, RoutedEventArgs e)
+        {
+            DataContext = new PaymentMOdel();
+        }
+
+        private void About_Handler(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void MenuItem_Click_11(object sender, RoutedEventArgs e)
+        {
+            DataContext = new IncomeModel();
         }
     }
 }

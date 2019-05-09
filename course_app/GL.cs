@@ -11,5 +11,7 @@ namespace course_app
         public static int permission_level;
         public static hotel_newEntities db = new hotel_newEntities();
         public static int cred_id;
+        public static MainWindow main;
+        public static Login_window login_Window;
     }
 }

@@ -16,6 +16,15 @@
                 <SolidColorBrush Color="#FF000306" Opacity="0.85"/>
             </Grid.Background>
             <Grid.RowDefinitions>
+             
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
                 <RowDefinition></RowDefinition>
                 <RowDefinition></RowDefinition>
                 <RowDefinition></RowDefinition>
@@ -47,14 +56,17 @@
             <Label FontSize="18" Foreground="#FFF2F9F8" FontWeight="Bold" Grid.Row="13" Margin="53,0,589.6,0.2">Email address</Label>
             <Label FontSize="18" Foreground="#FFF2F9F8" FontWeight="Bold" Grid.Row="15" Margin="53,0,589.6,0.2">Position</Label>
             <Label FontSize="18" Foreground="#FFF2F9F8" FontWeight="Bold" Grid.Row="17" Margin="53,0,589.6,0.2">Wage</Label>
-            <Button FontSize="18"  FontWeight="Bold" Grid.Row="19" Margin="453,0,89.6,0.2" Click="Button_Click">
+            <Label FontSize="18" Foreground="#FFF2F9F8" FontWeight="Bold" Grid.Row="19" Margin="53,0,589.6,0.2">Login</Label>
+            <Label FontSize="18" Foreground="#FFF2F9F8" FontWeight="Bold" Grid.Row="21" Margin="53,0,589.6,0.2">Password</Label>
+            <Label FontSize="18" Foreground="#FFF2F9F8" FontWeight="Bold" Grid.Row="23" Margin="53,0,589.6,0.2">Confirm password</Label>
+            <Button FontSize="18"  FontWeight="Bold" Grid.Row="25" Margin="453,0,89.6,0.2" Click="Button_Click">
                 <Button.Background>
                     <SolidColorBrush Color="#FF50F0E7" Opacity="0.7"/>
                 </Button.Background> Ok</Button>
             <TextBox x:Name="f_n" Grid.Row="1" Margin="279,0,100.6,0.2"/>
             <TextBox x:Name="m_n" Grid.Row="3" Margin="279,0,100.6,0.2" ></TextBox>
             <TextBox x:Name="l_n" Grid.Row="5" Margin="279,0,100.6,0.2"></TextBox>
-            <wpfTool:MaskedTextBox x:Name="ph_n" Grid.Row="7" FontSize="18" FontWeight="Bold" Mask="+38(000) 000-00-00" Margin="279,0,100.6,0.2" ></wpfTool:MaskedTextBox>
+            <wpfTool:MaskedTextBox x:Name="ph_n" Grid.Row="7" FontSize="18" FontWeight="Bold"  Margin="279,0,100.6,0.2" ></wpfTool:MaskedTextBox>
             <wpfTool:MaskedTextBox x:Name="pas_n" Grid.Row="9" FontSize="18"  FontWeight="Bold"  Margin="279,0,100.6,0.2"/>
             <wpfTool:MaskedTextBox x:Name="t_n" Grid.Row="11" FontSize="18"  FontWeight="Bold" Mask="0000000000" Margin="279,0,100.6,0.2"/>
             <wpfTool:MaskedTextBox x:Name="e_n" Grid.Row="13" FontSize="18"  FontWeight="Bold" Margin="279,0,100.6,0.2"/>
@@ -72,7 +84,11 @@
                     </DataTemplate>
                 </ComboBox.ItemTemplate>
             </ComboBox>
+            
             <wpfTool:MaskedTextBox x:Name="w_n" Grid.Row="17" FontSize="18"  FontWeight="Bold" Mask="00.00" Margin="279,0,100.6,0.2"/>
+            <TextBox x:Name="login" Grid.Row="19" Margin="279,0,100.6,0.2"></TextBox>
+            <PasswordBox x:Name="pass_box1" Grid.Row="21" Margin="279,0,100.6,0.2"></PasswordBox>
+            <PasswordBox x:Name="pass_box2" Grid.Row="23" Margin="279,0,100.6,0.2"></PasswordBox>
 
         </Grid>
     </ScrollViewer>

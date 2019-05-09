@@ -37,7 +37,8 @@ namespace course_app.Views
             temp.parking_spot_id = ps.parking_spot_id;
             GL.db.entrance_log.Add(temp);
             GL.db.SaveChanges();
-           
+            GL.main.Ent_log_Click(GL.main, e);
+
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
@@ -45,6 +46,7 @@ namespace course_app.Views
             entrance_log t=(entrance_log )ent_table.SelectedValue;
             GL.db.entrance_log.Remove(t);
             GL.db.SaveChanges();
+            GL.main.Ent_log_Click(GL.main, e);
         }
     }
 }

@@ -41,6 +41,9 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="InfragisticsWPF4.Controls.Charts.XamDataChart.v19.1, Version=19.1.20191.84, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
+    <Reference Include="InfragisticsWPF4.DataVisualization.v19.1, Version=19.1.20191.84, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
+    <Reference Include="InfragisticsWPF4.v19.1, Version=19.1.20191.84, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
@@ -144,16 +147,79 @@
     <Compile Include="sysdiagrams.cs">
       <DependentUpon>hotel_model.tt</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\AddpaymentModel.cs" />
+    <Compile Include="ViewModel\AddREservationModel.cs" />
     <Compile Include="ViewModel\AppViewModel.cs" />
+    <Compile Include="ViewModel\CleaningModel.cs" />
+    <Compile Include="ViewModel\ClientDataModel.cs" />
+    <Compile Include="ViewModel\ClientModel.cs" />
+    <Compile Include="ViewModel\ClientTypeModel.cs" />
+    <Compile Include="ViewModel\CostStatModel.cs" />
+    <Compile Include="ViewModel\currPaymentModel.cs" />
     <Compile Include="ViewModel\EmployeeModel.cs" />
     <Compile Include="ViewModel\EntranceTable.cs" />
     <Compile Include="ViewModel\GeneralSchedule.cs" />
+    <Compile Include="ViewModel\IncomeModel.cs" />
+    <Compile Include="ViewModel\ParkingSpotsModel.cs" />
+    <Compile Include="ViewModel\ParkingTypeModel.cs" />
+    <Compile Include="ViewModel\PaymentMOdel.cs" />
+    <Compile Include="ViewModel\PersCleanModel.cs" />
+    <Compile Include="ViewModel\PositionModel.cs" />
+    <Compile Include="ViewModel\ProfileModel.cs" />
+    <Compile Include="ViewModel\ProfitModel.cs" />
+    <Compile Include="ViewModel\ProvidedServices.cs" />
+    <Compile Include="ViewModel\ReservationModel.cs" />
+    <Compile Include="ViewModel\RoomModel.cs" />
+    <Compile Include="ViewModel\RoomTypeModel.cs" />
     <Compile Include="ViewModel\ScheduleModel.cs" />
+    <Compile Include="ViewModel\ServiceModel.cs" />
     <Compile Include="Views\Add.xaml.cs">
       <DependentUpon>Add.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\add_client.xaml.cs">
+      <DependentUpon>add_client.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\add_parking_spot.xaml.cs">
+      <DependentUpon>add_parking_spot.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\add_payment.xaml.cs">
+      <DependentUpon>add_payment.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Add_position.xaml.cs">
+      <DependentUpon>Add_position.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\add_reservation.xaml.cs">
+      <DependentUpon>add_reservation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\add_room.xaml.cs">
+      <DependentUpon>add_room.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Add_room_type.xaml.cs">
+      <DependentUpon>Add_room_type.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AllPayments.xaml.cs">
+      <DependentUpon>AllPayments.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\cleaning.xaml.cs">
+      <DependentUpon>cleaning.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\clients.xaml.cs">
+      <DependentUpon>clients.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\client_data.xaml.cs">
+      <DependentUpon>client_data.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\client_type.xaml.cs">
+      <DependentUpon>client_type.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CurrPayment.xaml.cs">
+      <DependentUpon>CurrPayment.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\employees.xaml.cs">
       <DependentUpon>employees.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Emp_pos.xaml.cs">
+      <DependentUpon>Emp_pos.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\entrance.xaml.cs">
       <DependentUpon>entrance.xaml</DependentUpon>
@@ -161,11 +227,62 @@
     <Compile Include="Views\general_schedule.xaml.cs">
       <DependentUpon>general_schedule.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Income.xaml.cs">
+      <DependentUpon>Income.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\parking_spot_table.xaml.cs">
+      <DependentUpon>parking_spot_table.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\parking_types.xaml.cs">
+      <DependentUpon>parking_types.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Personal_cleaning.xaml.cs">
+      <DependentUpon>Personal_cleaning.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\personal_schedule.xaml.cs">
       <DependentUpon>personal_schedule.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\position_info.xaml.cs">
+      <DependentUpon>position_info.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Profile.xaml.cs">
+      <DependentUpon>Profile.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Profit.xaml.cs">
+      <DependentUpon>Profit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\providedS.xaml.cs">
+      <DependentUpon>providedS.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\reservations.xaml.cs">
+      <DependentUpon>reservations.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\room_table.xaml.cs">
+      <DependentUpon>room_table.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\room_types.xaml.cs">
+      <DependentUpon>room_types.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\services.xaml.cs">
+      <DependentUpon>services.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CostsStatistics.xaml.cs">
+      <DependentUpon>CostsStatistics.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Update.xaml.cs">
       <DependentUpon>Update.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\update_client.xaml.cs">
+      <DependentUpon>update_client.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\update_parking_spot.xaml.cs">
+      <DependentUpon>update_parking_spot.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\update_room.xaml.cs">
+      <DependentUpon>update_room.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\update_room_type.xaml.cs">
+      <DependentUpon>update_room_type.xaml</DependentUpon>
     </Compile>
     <Compile Include="working_schedule.cs">
       <DependentUpon>hotel_model.tt</DependentUpon>
@@ -200,7 +317,63 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\add_client.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\add_parking_spot.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\add_payment.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Add_position.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\add_reservation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\add_room.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Add_room_type.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AllPayments.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\cleaning.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\clients.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\client_data.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\client_type.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CurrPayment.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\employees.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Emp_pos.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -212,11 +385,79 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Income.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\parking_spot_table.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\parking_types.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Personal_cleaning.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\personal_schedule.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\position_info.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Profile.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Profit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\providedS.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\reservations.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\room_table.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\room_types.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\services.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CostsStatistics.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Update.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\update_client.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\update_parking_spot.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\update_room.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\update_room_type.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -235,6 +476,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EmbeddedResource Include="Properties\Licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
