@@ -28,7 +28,7 @@ namespace course_app.Views
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             add_room w = new add_room();
-            w.Show();
+            w.ShowDialog();
             GL.main.MenuItem_Click_2(sender, e);
         }
 
@@ -41,7 +41,7 @@ namespace course_app.Views
         {
             room r = (room)ent_table.SelectedValue;
             update_room w = new update_room(r);
-            w.Show();
+            w.ShowDialog();
             GL.main.MenuItem_Click_2(sender, e);
 
         }

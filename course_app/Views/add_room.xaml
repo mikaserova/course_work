@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:course_app.Views"
         mc:Ignorable="d"
-        Title="add_room" Height="365.169" Width="600">
+        Title="Add Room" Height="365.169" Width="600">
    
     <Grid>
         <Grid.Background>

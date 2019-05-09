@@ -27,14 +27,37 @@ namespace course_app.Views
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            room r = new room();
-            r.room_number = t1.Text;
-            r.room_price = Convert.ToDecimal(t2.Text);
-            r.room_description = t4.Text;
-            r.room_type_id = ((room_type)t3.SelectedValue).room_type_id;
-            GL.db.room.Add(r);
-            GL.db.SaveChanges();
-            this.Close();
+            try
+            {
+                if (t1.Text.Length < 1)
+                {
+                    MessageBox.Show("Please enter correct room number");
+                    return;
+                }
+                if (t2.Text.Length < 1)
+                {
+                    MessageBox.Show("Please enter correct room price");
+                    return;
+                }
+                if (t3.SelectedIndex == -1)
+                {
+                    MessageBox.Show("Please choose room type");
+                    return;
+                }
+                room r = new room();
+                r.room_number = t1.Text;
+                r.room_price = Convert.ToDecimal(t2.Text);
+                r.room_type_id = ((room_type)t3.SelectedValue).room_type_id;
+                r.room_description = t4.Text;
+                GL.db.room.Add(r);
+                GL.db.SaveChanges();
+                this.Close();
+            }
+            catch(Exception)
+            {
+                MessageBox.Show("Please enter correct values");
+                return;
+            }
         }
     }
 }

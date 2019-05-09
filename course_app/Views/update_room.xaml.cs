@@ -34,6 +34,21 @@ namespace course_app.Views
         {
             try
             {
+                if (t1.Text.Length < 1)
+                {
+                    MessageBox.Show("Please enter correct room number");
+                    return;
+                }
+                if (t2.Text.Length < 1)
+                {
+                    MessageBox.Show("Please enter correct room price");
+                    return;
+                }
+                if (t3.SelectedIndex == -1)
+                {
+                    MessageBox.Show("Please choose room type");
+                    return;
+                }
                 room temp1 = new room();
                 temp1.room_number = t1.Text;
                 temp1.room_price = Convert.ToDecimal(t2.Text);
@@ -49,7 +64,7 @@ namespace course_app.Views
                     GL.db.SaveChanges();
                 }
                 this.Close();
-            }catch( Exception x)
+            } catch( Exception x)
             {
                 MessageBox.Show(x.Message);
             }

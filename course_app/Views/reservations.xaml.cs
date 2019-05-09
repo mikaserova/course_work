@@ -253,7 +253,8 @@ namespace course_app.Views
 
         private void Button_Click_4(object sender, RoutedEventArgs e)
         {
-            DataContext = new ViewModel.ReservationModel();
+            ViewModel.ReservationModel DataContext = new ViewModel.ReservationModel();
+            res_list.ItemsSource = DataContext.reservations;
         }
 
         private void MenuItem_Click2(object sender, RoutedEventArgs e)

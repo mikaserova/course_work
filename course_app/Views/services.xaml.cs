@@ -67,6 +67,9 @@ namespace course_app.Views
             panel.Visibility = Visibility.Visible;
             isAdd = false;
             t = GL.db.additional_service.Where(i => i.additional_service_id == ((additional_service)table.SelectedValue).additional_service_id).FirstOrDefault();
+            t1.Text = t.service_name;
+            t2.Text = t.service_price.ToString();
+            t3.Text = t.service_cost.ToString();
         }
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
