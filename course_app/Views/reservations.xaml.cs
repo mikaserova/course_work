@@ -259,6 +259,7 @@ namespace course_app.Views
         private void MenuItem_Click2(object sender, RoutedEventArgs e)
         {
             GL.main.DataContext = new ViewModel.ProvidedServices((reservation)res_list.SelectedValue);
+            GL.R = (reservation)res_list.SelectedValue;
         }
     }
 }

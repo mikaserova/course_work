@@ -13,5 +13,6 @@ namespace course_app
         public static int cred_id;
         public static MainWindow main;
         public static Login_window login_Window;
+        public static reservation R;
     }
 }
