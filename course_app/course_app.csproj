@@ -276,6 +276,9 @@
     <Compile Include="Views\Update.xaml.cs">
       <DependentUpon>Update.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\UpdatePosition.xaml.cs">
+      <DependentUpon>UpdatePosition.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\update_client.xaml.cs">
       <DependentUpon>update_client.xaml</DependentUpon>
     </Compile>
@@ -455,6 +458,10 @@
     <Page Include="Views\Update.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UpdatePosition.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\update_client.xaml">
       <SubType>Designer</SubType>
