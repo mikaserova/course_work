@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:course_app.Views"
         mc:Ignorable="d"
-        Title="add_parking_spot" Height="450" Width="800">
+        Title="Add Parking Spot" Height="450" Width="800">
     <Grid>
         <Grid.Background>
             <SolidColorBrush Color="#FF000306" Opacity="0.85"/>

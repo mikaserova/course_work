@@ -31,15 +31,36 @@ namespace course_app.Views
             s = p;
         }
 
+        private void Remove_reservation(object sender, RoutedEventArgs e)
+        {
+            t3.SelectedIndex = -1;
+        }
+
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+
+            if (t1.Text.Length < 2) {
+                MessageBox.Show("Please, enter correct parking spot number");
+                return;
+            }
+            if (t2.SelectedIndex == -1) {
+                MessageBox.Show("Please, choose type of parking spot");
+                return;
+            }
+
             parking_spot temp = GL.db.parking_spot.Where(t => t.parking_spot_id == s.parking_spot_id).FirstOrDefault();
             
-                temp.number = t1.Text;
-                temp.type_id = ((parking_type)t2.SelectedValue).parking_type_id;
+            temp.number = t1.Text;
+            temp.type_id = ((parking_type)t2.SelectedValue).parking_type_id;
+
+            if (t3.SelectedIndex != -1) {
                 temp.reservation_id = ((reservation)t3.SelectedValue).reservation_id;
-                GL.db.Entry(temp).State = System.Data.Entity.EntityState.Modified;
-                GL.db.SaveChanges();
+            }
+            else {
+                temp.reservation_id  = null;
+            }
+            GL.db.Entry(temp).State = System.Data.Entity.EntityState.Modified;
+            GL.db.SaveChanges();
             
             GL.main.MenuItem_Click_4(sender, e);
             this.Close();

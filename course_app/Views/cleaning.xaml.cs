@@ -30,43 +30,59 @@ namespace course_app.Views
 
         private void Delete_button_Click(object sender, RoutedEventArgs e)
         {
-            GL.db.cleaning_schedule.Remove((cleaning_schedule)shift_table.SelectedValue);
-            GL.db.SaveChanges();
-            GL.main.MenuItem_Click_5(sender, e);
+            try {
+                GL.db.cleaning_schedule.Remove((cleaning_schedule)shift_table.SelectedValue);
+                GL.db.SaveChanges();
+                GL.main.MenuItem_Click_5(sender, e);
+            }
+            catch (Exception ex) {
+                MessageBox.Show("Please select cleaning schedule record");
+            }
         }
 
         private void Add_button_Click(object sender, RoutedEventArgs e)
         {
-            cleaning_schedule c = new cleaning_schedule();
-            c.cleaning_start_time = Convert.ToDateTime(s_dt.Text);
-            c.cleaning_end_time = Convert.ToDateTime(e_dt.Text);
-            c.room_id = ((room)room_list.SelectedValue).room_id;
-            c.employee_id = ((employee)emp_list.SelectedValue).employee_id;
-            GL.db.cleaning_schedule.Add(c);
-            GL.db.SaveChanges();
-            GL.main.MenuItem_Click_5(sender, e);
+            try {
+                cleaning_schedule c = new cleaning_schedule();
+                c.cleaning_start_time = Convert.ToDateTime(s_dt.Text);
+                c.cleaning_end_time = Convert.ToDateTime(e_dt.Text);
+                c.room_id = ((room)room_list.SelectedValue).room_id;
+                c.employee_id = ((employee)emp_list.SelectedValue).employee_id;
+                GL.db.cleaning_schedule.Add(c);
+                GL.db.SaveChanges();
+                GL.main.MenuItem_Click_5(sender, e);
+            }
+            catch (Exception ex) {
+                MessageBox.Show("Please enter all valid values");
+            }
         }
 
         private void Upd_button_Click(object sender, RoutedEventArgs e)
         {
-            if (c)
-            {
-                temp.cleaning_start_time = Convert.ToDateTime(upd_s_dt.Text);
-                temp.cleaning_end_time = Convert.ToDateTime(upd_e_dt.Text);
-                temp.employee_id = ((employee)upd_emp_list.SelectedValue).employee_id;
-                temp.room_id = ((room)upd_room_list.SelectedValue).room_id;
-                GL.db.Entry(temp).State = System.Data.Entity.EntityState.Modified;
-                GL.db.SaveChanges();
-                GL.main.MenuItem_Click_5(sender, e);
+
+            try {
+                if (c)
+                {
+                    temp.cleaning_start_time = Convert.ToDateTime(upd_s_dt.Text);
+                    temp.cleaning_end_time = Convert.ToDateTime(upd_e_dt.Text);
+                    temp.employee_id = ((employee)upd_emp_list.SelectedValue).employee_id;
+                    temp.room_id = ((room)upd_room_list.SelectedValue).room_id;
+                    GL.db.Entry(temp).State = System.Data.Entity.EntityState.Modified;
+                    GL.db.SaveChanges();
+                    GL.main.MenuItem_Click_5(sender, e);
+                }
+                else
+                {
+                    temp = GL.db.cleaning_schedule.Where(i => i.cleaning_schedule_id == ((cleaning_schedule)shift_table.SelectedValue).cleaning_schedule_id).FirstOrDefault();
+                    upd_room_list.SelectedValue = ((cleaning_schedule)shift_table.SelectedValue).room;
+                    upd_emp_list.SelectedValue = ((cleaning_schedule)shift_table.SelectedValue).employee;
+                    upd_s_dt.Text = Convert.ToString(((cleaning_schedule)shift_table.SelectedValue).cleaning_start_time);
+                    upd_e_dt.Text = Convert.ToString(((cleaning_schedule)shift_table.SelectedValue).cleaning_end_time);
+                    c = !c;
+                }
             }
-            else
-            {
-                temp = GL.db.cleaning_schedule.Where(i => i.cleaning_schedule_id == ((cleaning_schedule)shift_table.SelectedValue).cleaning_schedule_id).FirstOrDefault();
-                upd_room_list.SelectedValue = ((cleaning_schedule)shift_table.SelectedValue).room;
-                upd_emp_list.SelectedValue = ((cleaning_schedule)shift_table.SelectedValue).employee;
-                upd_s_dt.Text = Convert.ToString(((cleaning_schedule)shift_table.SelectedValue).cleaning_start_time);
-                upd_e_dt.Text = Convert.ToString(((cleaning_schedule)shift_table.SelectedValue).cleaning_end_time);
-                c = !c;
+            catch (Exception ex) {
+                MessageBox.Show("Please enter all valid values");
             }
         }
     }

@@ -29,10 +29,22 @@ namespace course_app.Views
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+
+            if (spot.SelectedIndex == -1) {
+                MessageBox.Show("Please choose parking spot");
+                return;
+            }
+
+            if (stat.SelectedIndex == -1) {
+                MessageBox.Show("Please choose status");
+                return;
+            }
+
             entrance_log temp = new entrance_log();
             log_time_in.Value = DateTime.Now;
             temp.log_time =(DateTime) log_time_in.Value;
             temp.status = (string)stat.SelectedValue;
+
             parking_spot ps = (parking_spot)spot.SelectedValue;
             temp.parking_spot_id = ps.parking_spot_id;
             GL.db.entrance_log.Add(temp);

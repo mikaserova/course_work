@@ -1,11 +1,11 @@
-﻿<Window x:Class="course_app.Views.Add_position"
+﻿<Window x:Class="course_app.Views.UpdatePosition"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:course_app.Views"
         mc:Ignorable="d"
-        Title="Add_position" Height="350" Width="600">
+        Title="Update Position" Height="350" Width="600">
     <Grid>
         <Grid.Background>
             <SolidColorBrush Color="#FF000306" Opacity="0.85"/>

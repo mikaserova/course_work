@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:course_app.Views"
         mc:Ignorable="d"
-        Title="update_parking_spot" Height="450" Width="800">
+        Title="Update Parking Spot" Height="450" Width="800">
     <Grid>
         <Grid.Background>
             <SolidColorBrush Color="#FF000306" Opacity="0.85"/>
@@ -54,6 +54,8 @@
                 </DataTemplate>
             </ComboBox.ItemTemplate>
         </ComboBox>
+        <Button FontSize="18" Click="Remove_reservation" Grid.Column="1" Grid.Row="3" Margin="0,10" >Remove Reservation</Button>
+
         <Button Grid.Column="1" Grid.Row="5" Margin="250,5,5,5" FontSize="18"  FontWeight="Bold" Click="Button_Click">
             <Button.Background>
                 <SolidColorBrush Color="#FF50F0E7" Opacity="0.7"/>

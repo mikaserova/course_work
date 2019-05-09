@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+
 namespace course_app.Views
 {
     /// <summary>
@@ -30,14 +31,13 @@ namespace course_app.Views
             //add
             Add_position w = new Add_position();
             w.Show();
-
-
-
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-
+            UpdatePosition w = new UpdatePosition((employee_position)p_table.SelectedValue);
+            w.ShowDialog();
+            GL.main.MenuItem_Click(sender, e);
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
