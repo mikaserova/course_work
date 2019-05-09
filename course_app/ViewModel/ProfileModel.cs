@@ -19,7 +19,7 @@ namespace course_app.ViewModel
         private void CountSalary()
         {
             int month = DateTime.Today.Month;
-            List<working_schedule> shifts = GL.db.working_schedule.Where(t => t.employee_id == me.employee_id&&t.shift_start_time.Month==month).ToList();
+            List<working_schedule> shifts = GL.db.working_schedule.Where(t => t.employee_id == me.employee_id&&t.shift_start_time.Day==month).ToList();
             double sum = 0;
             foreach( working_schedule w in shifts)
             {

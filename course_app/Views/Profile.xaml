@@ -43,13 +43,13 @@
             <Button  Grid.Column="3"   Grid.Row="3" Click="Button_Click" Background="White" BorderBrush="{x:Null}" FontSize="18" FontWeight="Bold"> More details</Button>
         <Label FontSize="18" Foreground="#FFF2F9F8" FontWeight="Bold" Grid.Row="4" >Schedule</Label>
             <Button Grid.Column="2"  Grid.ColumnSpan="2" Grid.Row="4" Click="Button_Click_1" Background="White" BorderBrush="{x:Null}"  FontWeight="Bold" FontSize="18">Go to My Schedule</Button>
-            <TextBox  Text="{Binding number_shifts}" Grid.Column="1"  Grid.Row="4" BorderBrush="{x:Null}" FontSize="18" >
-                
-            </TextBox>
+            <TextBox  Text="{Binding number_shifts}" Grid.Column="1"  Grid.Row="4" BorderBrush="{x:Null}" FontSize="18" > </TextBox>
             <Label FontSize="18" Foreground="#FFF2F9F8" FontWeight="Bold" Grid.Row="5" x:Name="cl_lab" > Cleaning Schedule</Label>
             <Button Grid.Column="2"  Grid.ColumnSpan="2" Grid.Row="5" Background="White" BorderBrush="{x:Null}" FontSize="18" FontWeight="Bold" x:Name="clean_btn" Click="Clean_btn_Click">Go to My Cleaning Schedule</Button>
-            <Label FontSize="18" Foreground="#FFF2F9F8" FontWeight="Bold" Grid.Row="6">Salary</Label>
-            <TextBox Text="{Binding salary}" Grid.Column="1"  Grid.ColumnSpan="3" Grid.Row="6" BorderBrush="{x:Null}" FontSize="18"/>
+            <Label FontSize="18" Height="Auto" Foreground="#FFF2F9F8" FontWeight="Bold" Grid.Row="6">Wage</Label>
+            <TextBox Text="{Binding me.wage}" Grid.Column="1"  Grid.ColumnSpan="3" Grid.Row="6" BorderBrush="{x:Null}" FontSize="18"/>
+            <Label FontSize="18" Height="Auto" Foreground="#FFF2F9F8" FontWeight="Bold" Grid.Row="7">Salary</Label>
+            <TextBox Text="{Binding salary}" Grid.Column="1"  Grid.ColumnSpan="3" Grid.Row="7" BorderBrush="{x:Null}" FontSize="18"/>
         </Grid>
         </ScrollViewer>
 </UserControl>

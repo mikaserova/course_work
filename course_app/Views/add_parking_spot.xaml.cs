@@ -30,7 +30,9 @@ namespace course_app.Views
             parking_spot s = new parking_spot();
             s.number = t1.Text;
             s.type_id = ((parking_type)t2.SelectedValue).parking_type_id;
-            s.reservation_id = ((reservation)t3.SelectedValue).reservation_id;
+            if (t3.SelectedIndex != -1) {
+                s.reservation_id = ((reservation)t3.SelectedValue).reservation_id;
+            }
             GL.db.parking_spot.Add(s);
             GL.db.SaveChanges();
             GL.main.MenuItem_Click_4(sender, e);
