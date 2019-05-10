@@ -14,13 +14,6 @@ namespace course_app.ViewModel
             list_fields = new List<string>();
             list_fields.Add("Check in date");
             list_fields.Add("Check out date");
-            list_fields.Add("Check in date and time");
-            list_fields.Add("Check out date and time");
-            list_fields.Add("Check in and check out dates");
-            list_fields.Add("Reservation number");
-            list_fields.Add("Client");
-            list_fields.Add("Room");
-            list_fields.Add("Employee");
             reservations = GL.db.reservation.ToList();
             
 

@@ -41,112 +41,12 @@ namespace course_app.Views
             {
                 checkin_date.Visibility = Visibility.Visible;
                 checkout_date.Visibility = Visibility.Collapsed;
-                checkin_datetime.Visibility = Visibility.Collapsed;
-                checkout_datetime.Visibility = Visibility.Collapsed;
-                res_number.Visibility = Visibility.Collapsed;
-                client.Visibility = Visibility.Collapsed;
-                employee.Visibility = Visibility.Collapsed;
-                room_number.Visibility = Visibility.Collapsed;
-
-
-
             }
             else if ((string)what_search.SelectedValue == "Check out date")
             {
                 checkin_date.Visibility = Visibility.Collapsed;
                 checkout_date.Visibility = Visibility.Visible;
-                checkin_datetime.Visibility = Visibility.Collapsed;
-                checkout_datetime.Visibility = Visibility.Collapsed;
-                res_number.Visibility = Visibility.Collapsed;
-                client.Visibility = Visibility.Collapsed;
-                employee.Visibility = Visibility.Collapsed;
-                room_number.Visibility = Visibility.Collapsed;
             }
-            else if ((string)what_search.SelectedValue == "Check in date and time")
-            {
-                checkin_date.Visibility = Visibility.Collapsed;
-                checkout_date.Visibility = Visibility.Collapsed;
-
-                checkin_datetime.Visibility = Visibility.Visible;
-
-                checkout_datetime.Visibility = Visibility.Collapsed;
-                res_number.Visibility = Visibility.Collapsed;
-                client.Visibility = Visibility.Collapsed;
-                employee.Visibility = Visibility.Collapsed;
-                room_number.Visibility = Visibility.Collapsed;
-            }
-            else if ((string)what_search.SelectedValue == "Check out date and time")
-            {
-                checkin_date.Visibility = Visibility.Collapsed;
-                checkout_date.Visibility = Visibility.Collapsed;
-                checkin_datetime.Visibility = Visibility.Collapsed;
-
-                checkout_datetime.Visibility = Visibility.Visible;
-
-                res_number.Visibility = Visibility.Collapsed;
-                client.Visibility = Visibility.Collapsed;
-                employee.Visibility = Visibility.Collapsed;
-                room_number.Visibility = Visibility.Collapsed;
-            }
-            else if ((string)what_search.SelectedValue == "Check in and check out dates")
-            {
-                checkin_date.Visibility = Visibility.Visible;
-                checkout_date.Visibility = Visibility.Visible;
-                checkin_datetime.Visibility = Visibility.Collapsed;
-                checkout_datetime.Visibility = Visibility.Collapsed;
-                res_number.Visibility = Visibility.Collapsed;
-                client.Visibility = Visibility.Collapsed;
-                employee.Visibility = Visibility.Collapsed;
-                room_number.Visibility = Visibility.Collapsed;
-            }
-            else if ((string)what_search.SelectedValue == "Reservation number")
-            {
-                checkin_date.Visibility = Visibility.Collapsed;
-                checkout_date.Visibility = Visibility.Collapsed;
-                checkin_datetime.Visibility = Visibility.Collapsed;
-                checkout_datetime.Visibility = Visibility.Collapsed;
-                res_number.Visibility = Visibility.Visible;
-                client.Visibility = Visibility.Collapsed;
-                employee.Visibility = Visibility.Collapsed;
-                room_number.Visibility = Visibility.Collapsed;
-            }
-            else if ((string)what_search.SelectedValue == "Client")
-            {
-                checkin_date.Visibility = Visibility.Collapsed;
-                checkout_date.Visibility = Visibility.Collapsed;
-                checkin_datetime.Visibility = Visibility.Collapsed;
-                checkout_datetime.Visibility = Visibility.Collapsed;
-                res_number.Visibility = Visibility.Collapsed;
-
-                client.Visibility = Visibility.Visible;
-
-                employee.Visibility = Visibility.Collapsed;
-                room_number.Visibility = Visibility.Collapsed;
-            }
-            else if ((string)what_search.SelectedValue == "Employee")
-            {
-                checkin_date.Visibility = Visibility.Collapsed;
-                checkout_date.Visibility = Visibility.Collapsed;
-                checkin_datetime.Visibility = Visibility.Collapsed;
-                checkout_datetime.Visibility = Visibility.Collapsed;
-                res_number.Visibility = Visibility.Collapsed;
-                employee.Visibility = Visibility.Visible;
-                client.Visibility = Visibility.Collapsed;
-              
-                room_number.Visibility = Visibility.Collapsed;
-            }
-            else if ((string)what_search.SelectedValue == "Room")
-            {
-                checkin_date.Visibility = Visibility.Collapsed;
-                checkout_date.Visibility = Visibility.Collapsed;
-                checkin_datetime.Visibility = Visibility.Collapsed;
-                checkout_datetime.Visibility = Visibility.Collapsed;
-                res_number.Visibility = Visibility.Collapsed;
-                employee.Visibility = Visibility.Collapsed;
-                client.Visibility = Visibility.Collapsed;
-                room_number.Visibility = Visibility.Visible;
-            }
-
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -154,43 +54,23 @@ namespace course_app.Views
             List<reservation> reserv = new List<reservation>();
             if ((string)what_search.SelectedValue == "Check in date")
             {
+                if (checkin_date.SelectedDate == null)
+                {
+                    MessageBox.Show("Please Select Value");
+                    return;
+                }
                 DateTime t=(DateTime)checkin_date.SelectedDate;
                 reserv = GL.db.reservation.Where(i => i.check_in_date.Year == t.Year&& i.check_in_date.Month == t.Month&& i.check_in_date.Day == t.Day).ToList();
             }
             else if ((string)what_search.SelectedValue == "Check out date")
             {
+                if (checkout_date.SelectedDate == null)
+                {
+                    MessageBox.Show("Please Select Value");
+                    return;
+                }
                 DateTime t = (DateTime)checkout_date.SelectedDate;
                 reserv = GL.db.reservation.Where(i => i.check_out_date.Year == t.Year && i.check_out_date.Month == t.Month && i.check_out_date.Day == t.Day).ToList();
-            }
-            else if ((string)what_search.SelectedValue == "Check in date and time")
-            {
-                reserv = GL.db.reservation.Where(i => i.check_in_date == ((DateTime)checkin_datetime.Value)).ToList();
-            }
-            else if ((string)what_search.SelectedValue == "Check out date and time")
-            {
-                reserv = GL.db.reservation.Where(i => i.check_out_date == ((DateTime)checkout_datetime.Value)).ToList();
-            }
-            else if ((string)what_search.SelectedValue == "Check in and check out dates")
-            {
-                DateTime t = (DateTime)checkin_date.SelectedDate;
-                DateTime t1 = (DateTime)checkout_date.SelectedDate;
-                reserv = GL.db.reservation.Where(i => i.check_in_date.Year == t.Year && i.check_in_date.Month == t.Month && i.check_in_date.Day == t.Day&& i.check_out_date.Year == t1.Year && i.check_out_date.Month == t1.Month && i.check_out_date.Day == t1.Day).ToList();
-            }
-            else if ((string)what_search.SelectedValue == "Reservation number")
-            {
-                reserv = GL.db.reservation.Where(i => i.reservation_number==res_number.Text).ToList();
-            }
-            else if ((string)what_search.SelectedValue == "Client")
-            {
-                reserv = GL.db.reservation.Where(i => i.client==client.SelectedValue).ToList();
-            }
-            else if ((string)what_search.SelectedValue == "Employee")
-            {
-                reserv = GL.db.reservation.Where(i => i.employee == employee.SelectedValue).ToList();
-            }
-            else if ((string)what_search.SelectedValue == "Room")
-            {
-                reserv = GL.db.reservation.Where(i => i.room == room_number.SelectedValue).ToList();
             }
             res_list.ItemsSource = reserv;
             if (reserv.Count == 0) { MessageBox.Show("No items found!"); }
@@ -254,6 +134,11 @@ namespace course_app.Views
         private void Button_Click_4(object sender, RoutedEventArgs e)
         {
             ViewModel.ReservationModel DataContext = new ViewModel.ReservationModel();
+            what_search.SelectedIndex = -1;
+            checkin_date.SelectedDate = null;
+            checkout_date.SelectedDate = null;
+            checkin_date.Visibility = Visibility.Collapsed;
+            checkout_date.Visibility = Visibility.Collapsed;
             res_list.ItemsSource = DataContext.reservations;
         }
 

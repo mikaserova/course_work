@@ -45,13 +45,6 @@
             <Label FontSize="18" Foreground="#FFF2F9F8" FontWeight="Bold">Search input:</Label>
             <DatePicker x:Name="checkin_date" Visibility="Collapsed"></DatePicker>
             <DatePicker x:Name="checkout_date" Visibility="Collapsed"></DatePicker>
-            <wpfTool:DateTimePicker x:Name="checkin_datetime" Visibility="Collapsed"></wpfTool:DateTimePicker>
-            <wpfTool:DateTimePicker
-                x:Name="checkout_datetime" Visibility="Collapsed"></wpfTool:DateTimePicker>
-            <TextBox x:Name="res_number" Visibility="Collapsed"></TextBox>
-            <ComboBox x:Name="room_number" Visibility="Collapsed"></ComboBox>
-            <ComboBox x:Name="client" Visibility="Collapsed"></ComboBox>
-            <ComboBox x:Name="employee" Visibility="Collapsed"></ComboBox>
             <Button Click="Button_Click">Search</Button>
             <Button Click="Button_Click_4">Clear</Button>
 
