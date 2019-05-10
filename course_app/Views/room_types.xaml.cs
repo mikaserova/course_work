@@ -33,14 +33,14 @@ namespace course_app.Views
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             Add_room_type w = new Add_room_type();
-            w.Show();
+            w.ShowDialog();
             GL.main.BTN_Click(sender, e);
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
             update_room_type w = new update_room_type((room_type)table.SelectedValue);
-            w.Show();
+            w.ShowDialog();
             GL.main.BTN_Click(sender, e);
         }
 

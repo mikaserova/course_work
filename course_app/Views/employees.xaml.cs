@@ -28,7 +28,7 @@ namespace course_app.Views
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             Add addw = new Add();
-            addw.Show();
+            addw.ShowDialog();
             GL.main.Emp_add_Click(sender, e);
         }
 
@@ -47,7 +47,7 @@ namespace course_app.Views
            
             if (t != null) {
                 Update updw = new Update(t);
-                updw.Show();
+                updw.ShowDialog();
                 GL.main.Emp_add_Click(sender, e);
             }
             else

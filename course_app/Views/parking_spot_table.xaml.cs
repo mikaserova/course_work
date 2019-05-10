@@ -28,7 +28,7 @@ namespace course_app.Views
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             add_parking_spot w = new add_parking_spot();
-            w.Show();
+            w.ShowDialog();
             GL.main.MenuItem_Click_4(sender, e);
 
 
@@ -37,7 +37,7 @@ namespace course_app.Views
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
             update_parking_spot w = new update_parking_spot((parking_spot)ent_table.SelectedValue);
-            w.Show();
+            w.ShowDialog();
             GL.main.MenuItem_Click_4(sender, e);
         }
 

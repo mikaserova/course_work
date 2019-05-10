@@ -200,7 +200,7 @@ namespace course_app.Views
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             add_reservation w = new add_reservation();
-            w.Show();
+            w.ShowDialog();
             GL.main.MenuItem_Click_8(sender, e);
         }
 
@@ -209,7 +209,7 @@ namespace course_app.Views
             if ((reservation)res_list.SelectedValue != null)
             {
                 add_reservation w = new add_reservation((reservation)res_list.SelectedValue);
-            w.Show();
+            w.ShowDialog();
             GL.main.MenuItem_Click_8(sender, e);
         }
             else
@@ -237,7 +237,7 @@ namespace course_app.Views
             if ((reservation)res_list.SelectedValue != null)
             {
                 add_payment w = new add_payment((reservation)res_list.SelectedValue);
-                w.Show();
+                w.ShowDialog();
                 GL.main.MenuItem_Click_8(sender, e);
             }
             else

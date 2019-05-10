@@ -30,7 +30,7 @@ namespace course_app.Views
         {
             //add
             Add_position w = new Add_position();
-            w.Show();
+            w.ShowDialog();
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)

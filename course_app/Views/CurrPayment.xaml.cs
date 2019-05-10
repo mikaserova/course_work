@@ -37,7 +37,7 @@ namespace course_app.Views
             payment p =(payment) res_list.Items[0];
 
             add_payment w = new add_payment(p.reservation);
-            w.Show();
+            w.ShowDialog();
             DataContext = new ViewModel.currPaymentModel(p.reservation);
         }
     }

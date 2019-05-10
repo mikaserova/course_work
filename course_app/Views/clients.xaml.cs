@@ -36,14 +36,14 @@ namespace course_app.Views
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
             update_client w = new update_client((client)ent_table.SelectedValue);
-            w.Show();
+            w.ShowDialog();
             GL.main.MenuItem_Click_6(sender, e);
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             add_client w = new add_client();
-            w.Show();
+            w.ShowDialog();
             GL.main.MenuItem_Click_6(sender, e);
         }
 

@@ -28,14 +28,14 @@ namespace course_app.Views
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             add_payment w = new add_payment();
-            w.Show();
+            w.ShowDialog();
             GL.main.MenuItem_Click_91(sender, e);
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             add_payment w = new add_payment((payment)pay_list.SelectedValue);
-            w.Show();
+            w.ShowDialog();
             GL.main.MenuItem_Click_91(sender, e);
         }
 

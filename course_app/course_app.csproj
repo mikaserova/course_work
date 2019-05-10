@@ -116,6 +116,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>hotel_model.tt</DependentUpon>
     </Compile>
+    <Compile Include="AboutWindow.xaml.cs">
+      <DependentUpon>AboutWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Login_window.xaml.cs">
       <DependentUpon>Login_window.xaml</DependentUpon>
     </Compile>
@@ -297,6 +300,10 @@
     <Compile Include="working_schedule.cs">
       <DependentUpon>hotel_model.tt</DependentUpon>
     </Compile>
+    <Page Include="AboutWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Login_window.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

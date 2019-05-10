@@ -13,10 +13,10 @@
         </Grid.ColumnDefinitions>
         <DataGrid ItemsSource="{Binding payments}" x:Name="pay_list"  AutoGenerateColumns="False" Grid.RowSpan="2">
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Path=payment_date}"></DataGridTextColumn>
-                <DataGridTextColumn Binding="{Binding Path=payment_sum}"></DataGridTextColumn>
-                <DataGridTextColumn Binding="{Binding payment_type.payment_name}"></DataGridTextColumn>
-                <DataGridTextColumn Binding="{Binding reservation.reservation_number}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Payment Date"  Binding="{Binding Path=payment_date}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Sum" Binding="{Binding Path=payment_sum}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Type" Binding="{Binding payment_type.payment_name}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Reservation" Binding="{Binding reservation.reservation_number}"></DataGridTextColumn>
             </DataGrid.Columns>
 
         </DataGrid>

@@ -12,11 +12,11 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Button Margin="0,0,706,0.4" Click="Button_Click">Back</Button>
-        <DataGrid ItemsSource="{Binding cl_shifts}" Grid.Row="1">
+        <DataGrid ItemsSource="{Binding cl_shifts}" Grid.Row="1" AutoGenerateColumns="False">
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Path=cleaning_start_time}"></DataGridTextColumn>
-                <DataGridTextColumn Binding="{Binding Path=cleaning_end_time}"></DataGridTextColumn>
-                <DataGridTextColumn Binding="{Binding room.room_number}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Start Time" Binding="{Binding Path=cleaning_start_time}"></DataGridTextColumn>
+                <DataGridTextColumn Header="End Time" Binding="{Binding Path=cleaning_end_time}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Room Number" Binding="{Binding room.room_number}"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

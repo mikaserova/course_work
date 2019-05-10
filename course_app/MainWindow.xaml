@@ -95,12 +95,12 @@
 
             <MenuItem Header="Profile" Click="MenuItem_Click_1" >
                 <MenuItem.Icon>
-                    <Image Source="C:\Users\Myrosia\source\repos\course_app\2ba7fff7ab74.png"></Image>
+                    <Image Source="2ba7fff7ab74.png"></Image>
                 </MenuItem.Icon>
             </MenuItem>
             <MenuItem Header="HR" x:Name="HR">
                 <MenuItem.Icon>
-                    <Image Source="C:\Users\Myrosia\source\repos\course_app\icon-hr.png"></Image>
+                    <Image Source="icon-hr.png"></Image>
                 </MenuItem.Icon>
                 <MenuItem Header="Employees" Click="Emp_add_Click"></MenuItem>
                 <MenuItem Header="General Schedule" Click="General_schedule_Click" />
@@ -111,7 +111,7 @@
             </MenuItem>
             <MenuItem Header="Parking" x:Name="Parking">
                 <MenuItem.Icon>
-                    <Image Source="C:\Users\Myrosia\source\repos\course_app\pin-map-location-26-512.png"></Image>
+                    <Image Source="pin-map-location-26-512.png"></Image>
                 </MenuItem.Icon>
                 <MenuItem Header=" Entrance log" Click="MenuItem_Click_7"></MenuItem>
                 <MenuItem Header=" Parking spots" Click="MenuItem_Click_4"></MenuItem>
@@ -119,7 +119,7 @@
             </MenuItem>
             <MenuItem Header="Reservation"  x:Name="Reservation">
                 <MenuItem.Icon>
-                    <Image Source="C:\Users\Myrosia\source\repos\course_app\reservation.png"></Image>
+                    <Image Source="reservation.png"></Image>
                 </MenuItem.Icon>
                 <MenuItem Header="View all" Click="MenuItem_Click_8" ></MenuItem>
                 <MenuItem Header="Add new" Click="MenuItem_Click_9"></MenuItem>
@@ -131,7 +131,7 @@
             </MenuItem>
             <MenuItem Header="Resorces and services" x:Name="Resources" >
                 <MenuItem.Icon>
-                    <Image Source="C:\Users\Myrosia\source\repos\course_app\resource.png"></Image>
+                    <Image Source="resource.png"></Image>
                 </MenuItem.Icon>
                 <MenuItem Header=" Rooms" Click="MenuItem_Click_2"></MenuItem>
                 <MenuItem Header=" Additional services" Click="MenuItem_Click_3"></MenuItem>
@@ -139,7 +139,7 @@
             </MenuItem>
             <MenuItem Header="Cleaning" x:Name="Cleaning">
                 <MenuItem.Icon>
-                    <Image Source="C:\Users\Myrosia\source\repos\course_app\93a3bf669c.png"></Image>
+                    <Image Source="93a3bf669c.png"></Image>
                 </MenuItem.Icon>
                 <MenuItem Header=" Cleaning scedule" Click="MenuItem_Click_5"></MenuItem>
                 
@@ -148,15 +148,15 @@
             </MenuItem>
             <MenuItem Header="About" >
                 <MenuItem.Icon>
-                    <Image Source="C:\Users\Myrosia\source\repos\course_app\info.png"></Image>
+                    <Image Source="info.png"/>
                 </MenuItem.Icon>
-                <MenuItem Header=" About program" Click="About_Handler"></MenuItem>
+                <MenuItem Header=" About program" Click="About_Handler"/>
 
 
             </MenuItem>
             <MenuItem Header="Statistics" x:Name="Statistics">
                 <MenuItem.Icon>
-                    <Image Source="C:\Users\Myrosia\source\repos\course_app\info.png"></Image>
+                    <Image Source="info.png"></Image>
                 </MenuItem.Icon>
                 <MenuItem Header=" Costs" Click="MenuItem_Click_10" ></MenuItem>
                 <MenuItem Header=" Income" Click="MenuItem_Click_11"></MenuItem>

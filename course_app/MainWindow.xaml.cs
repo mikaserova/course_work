@@ -189,7 +189,7 @@ namespace course_app
         public void MenuItem_Click_9(object sender, RoutedEventArgs e)
         {
             course_app.Views.add_reservation w = new Views.add_reservation();
-            w.Show();
+            w.ShowDialog();
         }
 
         public void MenuItem_Click_10(object sender, RoutedEventArgs e)
@@ -204,7 +204,8 @@ namespace course_app
 
         private void About_Handler(object sender, RoutedEventArgs e)
         {
-
+            var w = new AboutWindow();
+            w.ShowDialog();
         }
 
         private void MenuItem_Click_11(object sender, RoutedEventArgs e)
